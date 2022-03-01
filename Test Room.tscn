@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+
+[node name="Test Room" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 780, 389 )
+run_speed = 800.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 444, -50, 455, 716, 529, 699, 500, -60 )
