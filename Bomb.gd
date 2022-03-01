@@ -108,9 +108,9 @@ func getIsStun():
 #commited out until we combined projects
 #detects if the body entered by the 2D area is a player if so add it to the array list
 func _on_Area2D_body_entered(body):
-#	if(body is Player):
-#		singleton.addBombsInInventory(body)
-#		print("collided with player, adding to singleton list of bombs")
-		#self.visible = false
-		#queue_free()
-	pass
+	if(body is Player):
+		singleton.addBombsInInventory(body)
+		print("collided with player, adding to singleton list of bombs")
+		self.visible = false
+		queue_free()
+	
