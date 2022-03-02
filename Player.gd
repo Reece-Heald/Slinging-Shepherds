@@ -34,6 +34,7 @@ var is_in_no_throw_zone = false
 
 #throwing variables
 var init_mouse_pos : Vector2 = Vector2(0,0)
+var throw_end_pos : Vector2
 
 func _ready():
 	set_process(true)
@@ -123,11 +124,18 @@ func _draw():
 			if mouse_diff.y != 0: signs.y = mouse_diff.y / abs(mouse_diff.y)
 			mouse_diff.x = pow(abs(mouse_diff.x), draw_back_power) * signs.x #do the power
 			mouse_diff.y = pow(abs(mouse_diff.y), draw_back_power) * signs.y
+			throw_end_pos = mouse_diff
 			draw_line(Vector2(0,0), mouse_diff, line_color, line_width) #draw the line
 
 #that good good turn towards the mouse
 func fine_tune_rotation():
 	$SpriteHolder.rotation = (direction_real.angle() + rotational_offset)
+
+func throw_bomb():
+	var bomb = load("res://StunBomb.tscn") as PackedScene #.instance() as Bomb
+	bomb = bomb.instance()
+	get_parent().add_child(bomb)
+	#bomb.bombThrow(global_position, throw_end_pos, 2)
 
 func _input(event):
 	#if mouse do thing
@@ -141,7 +149,8 @@ func _input(event):
 				if event.pressed: 
 					state = THROWING #if pressed state is throwing
 					init_mouse_pos = mouse_pos #set the starting mouse pos
-				if not event.pressed: 
+				if not event.pressed:
+					throw_bomb()
 					state = IDLE #if released state is idle
 					update() #makes sure to undraw line
 	

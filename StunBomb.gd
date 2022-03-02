@@ -1,4 +1,4 @@
-extends "res://Bomb.gd"
+extends Bomb
 
 
 # Declare member variables here. Examples:
