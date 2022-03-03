@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player.gd"
+}, {
+"base": "Bomb",
+"class": "StunBomb",
+"language": "GDScript",
+"path": "res://StunBomb.gd"
 } ]
 _global_script_class_icons={
 "Bomb": "",
-"Player": ""
+"Player": "",
+"StunBomb": ""
 }
 
 [application]
