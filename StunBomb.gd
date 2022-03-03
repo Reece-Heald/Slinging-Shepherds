@@ -1,5 +1,4 @@
 extends Bomb
-
 class_name StunBomb
 
 # Declare member variables here. Examples:
