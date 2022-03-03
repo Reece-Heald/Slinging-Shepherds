@@ -22,8 +22,8 @@ var mouse_pos : Vector2
 var direction_real : Vector2 = Vector2(0,0) #any angle
 var direction_sprite : Vector2 = Vector2(0,0) #only up down left right
 var rotational_offset = 0
-var bomb = preload("res://StunBomb.tscn") as PackedScene 
-var bomb_script = preload("res://StunBomb.gd") as Script
+var bomb = load("res://Bomb.tscn") as PackedScene 
+#var bomb_script = load("res://StunBomb.gd") as Script
 
 #flags and such
 enum {IDLE, MOVING, THROWING, STOPPED}
@@ -136,10 +136,12 @@ func fine_tune_rotation():
 func throw_bomb():
 	#.instance() as Bomb
 	var bomb_i = bomb.instance()
-	print(bomb_script)
+#	print(bomb_script)
 #	bomb_i.set_script(bomb_script)
-#	get_parent().add_child(bomb_i)
-#	print(bomb_i.get_script())
+	
+	get_parent().add_child(bomb_i)
+	print(bomb_i.get_children())
+	print(bomb_i.get_script())
 #	bomb_i.bombThrow(global_position, throw_end_pos, 2)
 
 func _input(event):
