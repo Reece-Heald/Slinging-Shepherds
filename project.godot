@@ -33,7 +33,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Slingin Sheperds"
-run/main_scene="res://Test Room.tscn"
 config/icon="res://icon.png"
 
 [physics]
