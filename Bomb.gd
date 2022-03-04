@@ -7,7 +7,7 @@ var isRangeBomb = false
 var isDamageBomb = false
 var isStunBomb = true 
 
-var singleton = preload("res://GameVarables.gd")
+#var singleton = preload("res://GameVarables.gd")
 
 
 export var _scaleRatio = Vector2(1,1)
@@ -17,24 +17,30 @@ var bombRange = 15
 var _speed := 5
 var velocity = Vector2(0,0)
 
+var isMoving = false
+var targetPosition = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("test")
 	
 	
-	 # Replace with function body.
+	
+func setIsMoving(input):
+	self.isMoving = input
+	print("is move is set to ", input)
 
-func _physics_process(delta):
-	#velocity.x =+ _speed
-	#move_and_collide(velocity)
-	#print(global_position.x,global_position.y)
-	var angle = get_angle_to(Vector2(300,300))
-	velocity.x = cos(angle)
-	velocity.y = sin(angle)
-	global_position += velocity * _speed  
-	
+func _process(delta):
+	var processMove = isMoving
+	if processMove == true:
+		print("bomb move")
+		var angle = get_angle_to(targetPosition)
+		velocity.x = cos(angle)
+		velocity.y = sin(angle)
+		global_position += velocity * _speed  
+		#self.setIsMoving(false)
+		
 func bombThrow(startPos, targetPos):
-	
+	self.targetPosition = targetPos
 	#first pos
 	var startPosX = startPos.x 
 	var startPosY = startPos.y
@@ -47,17 +53,21 @@ func bombThrow(startPos, targetPos):
 	var middleOfLineY  = ceil(abs(sqrt(pow(targetPosY - startPosY,2))))
 	var midPoint = Vector2(middleOfLineX, middleOfLineY)
 	
+	setIsMoving(true)
+	print(isMoving)
+	self.global_position = startPos
+
 	
 	
 	#movement part
-	#self.global_position = startPos
-	var direction = (targetPos - startPos).normalized()
+	
+	
 	
 
 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Player"):
-		singleton.addBombsInInventory(body)
+		GameVarables.addBombsInInventory(body)
 		print("collided with player, adding to singleton list of bombs")
 		self.visible = false
 		queue_free()
