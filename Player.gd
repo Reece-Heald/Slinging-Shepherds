@@ -134,14 +134,15 @@ func fine_tune_rotation():
 	$SpriteHolder.rotation = (direction_real.angle() + rotational_offset)
 
 func throw_bomb():
+	pass
 	#.instance() as Bomb
-	var bomb_i = bomb.instance()
-#	print(bomb_script)
-#	bomb_i.set_script(bomb_script)
-	
-	get_parent().add_child(bomb_i)
-	print(bomb_i.get_children())
-	print(bomb_i.get_script())
+#	var bomb_i = bomb.instance()
+##	print(bomb_script)
+##	bomb_i.set_script(bomb_script)
+#
+#	get_parent().add_child(bomb_i)
+#	print(bomb_i.get_children())
+#	print(bomb_i.get_script())
 #	bomb_i.bombThrow(global_position, throw_end_pos, 2)
 
 func _input(event):
