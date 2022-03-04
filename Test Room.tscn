@@ -47,3 +47,5 @@ position = Vector2( 1025, 301 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom3"]
 shape = SubResource( 1 )
+
+[node name="GrassSpawner" type="Node2D" parent="."]
