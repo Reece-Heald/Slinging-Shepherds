@@ -9,24 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Bomb",
+"language": "GDScript",
+"path": "res://Bomb.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player.gd"
 } ]
 _global_script_class_icons={
+"Bomb": "",
 "Player": ""
 }
 
 [application]
 
 config/name="Slingin Sheperds"
-run/main_scene="res://Test Room.tscn"
 config/icon="res://icon.png"
-
-[autoload]
-
-GameVarables="*res://GameVarables.gd"
 
 [physics]
 
