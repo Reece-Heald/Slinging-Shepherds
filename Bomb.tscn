@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Bomb.gd" type="Script" id=1]
 [ext_resource path="res://basicBOmb.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "bombExplode"
+length = 0.001
+step = 0.03
 
 [node name="Bomb" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -22,3 +27,6 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bombExplode = SubResource( 3 )
