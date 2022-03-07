@@ -62,7 +62,8 @@ func bombThrow(startPos, targetPos):
 	#movement part
 	
 	
-	
+func explode():
+	pass
 
 
 func _on_Area2D_body_entered(body):
