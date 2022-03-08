@@ -21,27 +21,22 @@ var isMoving = true
 var targetPosition = GameVarables.targetPos
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("test")
+	pass
 	
 	
-	
-func setIsMoving(input):
-	self.isMoving = input
-	print("is move is set to ", input)
-
+ 
 func _process(delta):
 	 
-		print("bomb move 2")
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
 		global_position += velocity * _speed  
 		print(self.global_position)
 		print(angle)
-		var newStationaryBomb = StationaryBomb.instance()
-		get_parent().add_child(newStationaryBomb)
-		self.visible = false
-		newStationaryBomb.global_postition = self.global_position
+		#var newStationaryBomb = StationaryBomb.
+		#get_parent().add_child(newStationaryBomb)
+		#self.visible = false
+		#newStationaryBomb.global_postition = self.global_position
 		#self.setIsMoving(false)
  
 func explode():
