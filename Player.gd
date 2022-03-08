@@ -25,6 +25,13 @@ var rotational_offset = 0
 var bomb = load("res://Bomb.tscn") as PackedScene 
 #var bomb_script = load("res://StunBomb.gd") as Script
 
+#bomb variables
+var ThrowingBomb = load("res://ThrowingBomb.tscn")
+var bomb_speed := 5
+var bomb_velocity = Vector2(0,0)
+var targetPosition = Vector2(444,333)
+
+
 #flags and such
 enum {IDLE, MOVING, THROWING, STOPPED}
 var state = IDLE
@@ -44,12 +51,15 @@ func _ready():
 func _process(delta):
 	if state == IDLE or state == MOVING:
 		follow_mouse()
+		
 	
 	if state == THROWING:
 		update() #keeps drawing if throwing is happening
 	
 	update_direction()
-	update_sprite()
+	update_sprite() 
+	bombThrowTest()
+	 
 
 func follow_mouse():
 	#make sure mousepos exists
@@ -174,3 +184,27 @@ func _notification(what):
 		is_mouse_on_screen = true
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
 		is_mouse_on_screen = false
+		
+		
+func throwBomb(startPos, targetPos):
+	pass
+		#print(self.global_position)
+		#print(angle)
+func bombThrowTest( ):
+	if(Input.is_action_pressed("throw")):
+		print("throw")
+		#throwBomb(self.global_position, Vector2(self.global_position.x + 155, self.global_position.y))
+		var newBomb = ThrowingBomb.instance()
+		get_parent().add_child(newBomb)
+		newBomb.global_position = self.global_position
+		newBomb.visible  = true
+		print("bomb move") 
+		GameVarables.targetPos = Vector2(self.global_position.x + 155, self.global_position.y)
+		
+		#var angle = get_angle_to(Vector2(self.global_position.x + 155, self.global_position.y))
+		#bomb_velocity.x = cos(angle)
+		#bomb_velocity.y = sin(angle)
+		#print(newBomb.global_position)
+		#newBomb.global_position += bomb_velocity * bomb_speed  
+		 
+

@@ -5,6 +5,8 @@ var bombsInInventory = []
 
 var bombMoving = false
 
+var targetPos = Vector2()
+
 func addBombsInInventory(bomb):
 	bombsInInventory.insert(bomb)
 	
@@ -15,4 +17,5 @@ func setBombMoving(input):
 	bombMoving = input
 func getBombMoving():
 	return bombMoving
+
 

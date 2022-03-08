@@ -17,8 +17,8 @@ var bombRange = 15
 var _speed := 5
 var velocity = Vector2(0,0)
 
-var isMoving = false
-var targetPosition = Vector2()
+var isMoving = true
+var targetPosition = GameVarables.targetPos
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("test")
@@ -30,13 +30,14 @@ func setIsMoving(input):
 	print("is move is set to ", input)
 
 func _process(delta):
-	var processMove = isMoving
-	if processMove == true:
-		print("bomb move")
+	 
+		print("bomb move 2")
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
 		global_position += velocity * _speed  
+		print(self.global_position)
+		print(angle)
 		#self.setIsMoving(false)
 		
 func bombThrow(startPos, targetPos):
@@ -53,8 +54,8 @@ func bombThrow(startPos, targetPos):
 	var middleOfLineY  = ceil(abs(sqrt(pow(targetPosY - startPosY,2))))
 	var midPoint = Vector2(middleOfLineX, middleOfLineY)
 	
-	setIsMoving(true)
-	print(isMoving)
+	#setIsMoving(true)
+	#print(isMoving)
 	self.global_position = startPos
 
 	
