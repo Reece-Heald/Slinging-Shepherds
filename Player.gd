@@ -57,9 +57,7 @@ func _process(delta):
 		update() #keeps drawing if throwing is happening
 	
 	update_direction()
-	update_sprite() 
-	bombThrowTest()
-	 
+	update_sprite()
 
 func follow_mouse():
 	#make sure mousepos exists
@@ -143,17 +141,14 @@ func _draw():
 func fine_tune_rotation():
 	$SpriteHolder.rotation = (direction_real.angle() + rotational_offset)
 
+
+#make and throw bomb
 func throw_bomb():
-	pass
-	#.instance() as Bomb
-#	var bomb_i = bomb.instance()
-##	print(bomb_script)
-##	bomb_i.set_script(bomb_script)
-#
-#	get_parent().add_child(bomb_i)
-#	print(bomb_i.get_children())
-#	print(bomb_i.get_script())
-#	bomb_i.bombThrow(global_position, throw_end_pos, 2)
+	var newBomb = ThrowingBomb.instance()
+	newBomb.global_position = self.global_position
+	newBomb.visible  = true
+	GameVarables.targetPos = targetPosition
+	get_parent().add_child(newBomb)
 
 func _input(event):
 	#if mouse do thing
@@ -185,26 +180,5 @@ func _notification(what):
 	if what == NOTIFICATION_WM_MOUSE_EXIT:
 		is_mouse_on_screen = false
 		
-		
-func throwBomb(startPos, targetPos):
-	pass
-		#print(self.global_position)
-		#print(angle)
-func bombThrowTest( ):
-	if(Input.is_action_pressed("throw")):
-		print("throw")
-		#throwBomb(self.global_position, Vector2(self.global_position.x + 155, self.global_position.y))
-		var newBomb = ThrowingBomb.instance()
-		get_parent().add_child(newBomb)
-		newBomb.global_position = self.global_position
-		newBomb.visible  = true
-		print("bomb move") 
-		GameVarables.targetPos = Vector2(self.global_position.x + 155, self.global_position.y)
-		
-		#var angle = get_angle_to(Vector2(self.global_position.x + 155, self.global_position.y))
-		#bomb_velocity.x = cos(angle)
-		#bomb_velocity.y = sin(angle)
-		#print(newBomb.global_position)
-		#newBomb.global_position += bomb_velocity * bomb_speed  
-		 
+	
 
