@@ -28,8 +28,6 @@ var bomb = load("res://Bomb.tscn") as PackedScene
 #bomb variables
 var ThrowingBomb = load("res://ThrowingBomb.tscn")
 var bomb_speed := 5
-var bomb_velocity = Vector2(0,0)
-var targetPosition = Vector2(444,333)
 
 
 #flags and such
