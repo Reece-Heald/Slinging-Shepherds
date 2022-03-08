@@ -9,7 +9,7 @@ var isStunBomb = true
 
 #var singleton = preload("res://GameVarables.gd")
 
-
+var StationaryBomb =  load("res://StationaryBomb.gd")
 export var _scaleRatio = Vector2(1,1)
 
 var damage = 5
@@ -38,31 +38,12 @@ func _process(delta):
 		global_position += velocity * _speed  
 		print(self.global_position)
 		print(angle)
+		var newStationaryBomb = StationaryBomb.instance()
+		get_parent().add_child(newStationaryBomb)
+		self.visible = false
+		newStationaryBomb.global_postition = self.global_position
 		#self.setIsMoving(false)
-		
-func bombThrow(startPos, targetPos):
-	self.targetPosition = targetPos
-	#first pos
-	var startPosX = startPos.x 
-	var startPosY = startPos.y
-	#second pos
-	var targetPosX = targetPos.x
-	var targetPosY = targetPos.y
-	
-	#|ab| = sqrt(sqr(b.x - a.x) + sqr(b.y - a.y))
-	var middleOfLineX = ceil(abs(sqrt(pow(targetPosX - startPosX,2))))
-	var middleOfLineY  = ceil(abs(sqrt(pow(targetPosY - startPosY,2))))
-	var midPoint = Vector2(middleOfLineX, middleOfLineY)
-	
-	#setIsMoving(true)
-	#print(isMoving)
-	self.global_position = startPos
-
-	
-	
-	#movement part
-	
-	
+ 
 func explode():
 	pass
 
