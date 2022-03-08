@@ -144,10 +144,11 @@ func fine_tune_rotation():
 
 #make and throw bomb
 func throw_bomb():
+	print(throw_end_pos)
+	GameVarables.targetPos = throw_end_pos
 	var newBomb = ThrowingBomb.instance()
 	newBomb.global_position = self.global_position
 	newBomb.visible  = true
-	GameVarables.targetPos = targetPosition
 	get_parent().add_child(newBomb)
 
 func _input(event):
