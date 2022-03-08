@@ -148,7 +148,7 @@ func throw_bomb():
 	newBomb.global_position = self.global_position
 	newBomb.visible  = true
 	GameVarables.targetPos = targetPosition
-	get_parent().add_child(newBomb)	
+	get_parent().add_child(newBomb)
 
 func _input(event):
 	#if mouse do thing
