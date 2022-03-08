@@ -43,12 +43,7 @@ func explode():
 	pass
 
 
-func _on_Area2D_body_entered(body):
-	if(body.name == "Player"):
-		GameVarables.addBombsInInventory(body)
-		print("collided with player, adding to singleton list of bombs")
-		self.visible = false
-		queue_free()
+
 
 
 
