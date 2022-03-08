@@ -9,7 +9,7 @@ var isStunBomb = true
 
 #var singleton = preload("res://GameVarables.gd")
 
-var StationaryBomb =  load("res://StationaryBomb.gd")
+var StationaryBomb =  load("res://StationaryBomb.tscn")
 export var _scaleRatio = Vector2(1,1)
 
 var damage = 5
@@ -33,10 +33,12 @@ func _process(delta):
 		global_position += velocity * _speed  
 #		print(self.global_position)
 #		print(angle)
-		#var newStationaryBomb = StationaryBomb.instance()
+		#var newStationaryBomb 
+		#newStationaryBomb = StationaryBomb.instance( )
 		#get_parent().add_child(newStationaryBomb)
-		#self.visible = false
 		#newStationaryBomb.global_postition = self.global_position
+		#self.visible = false
+		 
 		#self.setIsMoving(false)
  
 func explode():
