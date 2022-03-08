@@ -31,9 +31,9 @@ func _process(delta):
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
 		global_position += velocity * _speed  
-#		print(self.global_position)
-#		print(angle)
-		#var newStationaryBomb = StationaryBomb.
+		print(self.global_position)
+		print(angle)
+		#var newStationaryBomb = StationaryBomb.instance()
 		#get_parent().add_child(newStationaryBomb)
 		#self.visible = false
 		#newStationaryBomb.global_postition = self.global_position
