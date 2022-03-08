@@ -134,7 +134,7 @@ func _draw():
 			if mouse_diff.y != 0: signs.y = mouse_diff.y / abs(mouse_diff.y)
 			mouse_diff.x = pow(abs(mouse_diff.x), draw_back_power) * signs.x #do the power
 			mouse_diff.y = pow(abs(mouse_diff.y), draw_back_power) * signs.y
-			throw_end_pos = mouse_diff
+			throw_end_pos = global_position + mouse_diff
 			draw_line(Vector2(0,0), mouse_diff, line_color, line_width) #draw the line
 
 #that good good turn towards the mouse
@@ -144,7 +144,6 @@ func fine_tune_rotation():
 
 #make and throw bomb
 func throw_bomb():
-	print(throw_end_pos)
 	GameVarables.targetPos = throw_end_pos
 	var newBomb = ThrowingBomb.instance()
 	newBomb.global_position = self.global_position
