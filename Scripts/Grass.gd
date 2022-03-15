@@ -5,8 +5,8 @@ var grow2 = preload("res://Sprites/Grass/Grass2.png")
 var grow3 = preload("res://Sprites/Grass/Grass3.png")
 
 var counter
-export (int) var timeToSprite2 = 100
-export (int) var timeToSprite3 = 200
+export (int) var timeToSprite2 = 2
+export (int) var timeToSprite3 = 4
 
 func _ready():
 	counter = 0

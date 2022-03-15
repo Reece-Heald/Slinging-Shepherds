@@ -3,4 +3,5 @@
 [ext_resource path="res://Scripts/Grass.gd" type="Script" id=1]
 
 [node name="Grass" type="Sprite"]
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
