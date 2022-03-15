@@ -17,4 +17,4 @@ func _process(delta):
 		set_texture(grow2)
 	if (counter > timeToSprite3):
 		set_texture(grow3)
-	counter += 1
+	counter += delta

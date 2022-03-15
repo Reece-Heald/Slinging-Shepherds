@@ -15,7 +15,7 @@ func _ready():
 	screenSizeVert = get_viewport().get_visible_rect().size.y
 	
 func _process(delta):
-	if (counter > spawnSpeed-1):
+	if (counter > 100):
 		var posHoriz = randf() * screenSizeHoriz
 		var posVert = randf() * screenSizeVert
 		grassSprite = grassLocation.instance()
@@ -24,4 +24,4 @@ func _process(delta):
 		
 		counter = 0
 	else:
-		counter += 1
+		counter += spawnSpeed * delta
