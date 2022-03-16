@@ -1,6 +1,6 @@
 extends Node
 
-export (int) var spawnSpeed = 5
+export (int) var grassSpawnSpeed = 60
 
 var screenSizeHoriz
 var screenSizeVert
@@ -24,4 +24,4 @@ func _process(delta):
 		
 		counter = 0
 	else:
-		counter += spawnSpeed * delta
+		counter += grassSpawnSpeed * delta

@@ -1,11 +1,11 @@
 extends Node
 
-export (int) var spawnSpeed = 5
+export (int) var areaSpawnSpeed = 60
 
 var screenSizeHoriz
 var screenSizeVert
-const grassLocation = preload("res://Prefabs/GrassArea.tscn")
-var grassSprite
+const grassAreaLocation = preload("res://Prefabs/GrassArea.tscn")
+var grassArea
 var counter
 
 func _ready():
@@ -18,10 +18,10 @@ func _process(delta):
 	if (counter > 100):
 		var posHoriz = randf() * screenSizeHoriz
 		var posVert = randf() * screenSizeVert
-		grassSprite = grassLocation.instance()
-		grassSprite.set_global_position(Vector2(posHoriz, posVert))
-		add_child(grassSprite)
+		grassArea = grassAreaLocation.instance()
+		grassArea.set_global_position(Vector2(posHoriz, posVert))
+		add_child(grassArea)
 		
 		counter = 0
 	else:
-		counter += spawnSpeed * delta
+		counter += areaSpawnSpeed * delta
