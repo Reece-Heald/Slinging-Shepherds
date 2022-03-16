@@ -7,6 +7,9 @@ var velocity = Vector2()
 
 var counter = rotateSpeed
 
+func _ready():
+	pass
+
 func _physics_process(delta):
 #	print(delta)
 	if (counter > rotateSpeed-1):
