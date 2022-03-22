@@ -2,10 +2,7 @@
 
 [ext_resource path="res://ThrowingBomb.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=2]
-<<<<<<< Updated upstream
-=======
 [ext_resource path="res://bombMidpointDetection.tscn" type="PackedScene" id=3]
->>>>>>> Stashed changes
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.0

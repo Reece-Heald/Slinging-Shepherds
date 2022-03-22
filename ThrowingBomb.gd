@@ -21,8 +21,8 @@ var _speed := 5
 var velocity = Vector2(0,0)
 
 var isMoving = true
-var targetPosition = GameVarables.targetPos
-var midPointPosition = GameVarables.midPointPos
+var targetPosition = BombGameVarables.targetPos
+var midPointPosition = BombGameVarables.midPointPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,8 +41,8 @@ func _process(delta):
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
-		self.scale.x += GameVarables.scaleRatio
-		self.scale.y += GameVarables.scaleRatio
+		self.scale.x += BombGameVarables.scaleRatio
+		self.scale.y += BombGameVarables.scaleRatio
 		
 		#print("the end point is: ", self.global_position)
 		#print("the midpoint is: ", midPointPosition)

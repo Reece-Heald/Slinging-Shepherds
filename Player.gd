@@ -145,9 +145,9 @@ func fine_tune_rotation():
 func throw_bomb():
 	var midPosX = ceil(abs((throw_end_pos.x + self.global_position.x)/2))
 	var midPosY = ceil(abs((throw_end_pos.y + self.global_position.y)/2))
-	GameVarables.targetPos = throw_end_pos
-	GameVarables.midPointPos = Vector2(midPosX,midPosY)
-	GameVarables.scaleRatio = .08
+	BombGameVarables.targetPos = throw_end_pos
+	BombGameVarables.midPointPos = Vector2(midPosX,midPosY)
+	BombGameVarables.scaleRatio = .08
 	#print("the start point it: ",self.global_position)
 	var newBomb = ThrowingBomb.instance()
 	newBomb.global_position = self.global_position
