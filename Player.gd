@@ -44,6 +44,7 @@ var init_mouse_pos : Vector2 = Vector2(0,0)
 var throw_end_pos : Vector2
 
 func _ready():
+	PlayerHead.connect_body(self)
 	set_process(true)
 
 func _process(delta):

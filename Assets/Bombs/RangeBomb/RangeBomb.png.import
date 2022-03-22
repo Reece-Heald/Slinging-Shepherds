@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RangeBomb.png-a13a8301f44da4aa41ca1d2b08984a1e.stex"
+path="res://.import/RangeBomb.png-a3ec3930f6250f1b2b733754437881d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RangeBomb.png"
-dest_files=[ "res://.import/RangeBomb.png-a13a8301f44da4aa41ca1d2b08984a1e.stex" ]
+source_file="res://Assets/Bombs/RangeBomb/RangeBomb.png"
+dest_files=[ "res://.import/RangeBomb.png-a3ec3930f6250f1b2b733754437881d0.stex" ]
 
 [params]
 

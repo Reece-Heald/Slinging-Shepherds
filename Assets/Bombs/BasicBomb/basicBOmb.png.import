@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/basicBOmb.png-0fe76fe0d03012e0323de6e24203d84b.stex"
+path="res://.import/basicBOmb.png-7a0ab1a4e179b6a71a5f66ebae7f38ed.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://basicBOmb.png"
-dest_files=[ "res://.import/basicBOmb.png-0fe76fe0d03012e0323de6e24203d84b.stex" ]
+source_file="res://Assets/Bombs/BasicBomb/basicBOmb.png"
+dest_files=[ "res://.import/basicBOmb.png-7a0ab1a4e179b6a71a5f66ebae7f38ed.stex" ]
 
 [params]
 

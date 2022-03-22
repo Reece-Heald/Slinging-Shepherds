@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosionFrame2.png-ee0026348c996c44696b7b4d212cd223.stex"
+path="res://.import/explosionFrame2.png-3368df367ce7257f93eedca0e24464e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://explosionFrame2.png"
-dest_files=[ "res://.import/explosionFrame2.png-ee0026348c996c44696b7b4d212cd223.stex" ]
+source_file="res://Assets/Bombs/Explosion/explosionFrame2.png"
+dest_files=[ "res://.import/explosionFrame2.png-3368df367ce7257f93eedca0e24464e1.stex" ]
 
 [params]
 

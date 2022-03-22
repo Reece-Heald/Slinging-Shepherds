@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StunBOmbFrame1.png-c28b889b976b3d433a14f9959ceeb7c1.stex"
+path="res://.import/StunBOmbFrame1.png-9292b9c4f855207804ec1fe915fd2dc5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://StunBOmbFrame1.png"
-dest_files=[ "res://.import/StunBOmbFrame1.png-c28b889b976b3d433a14f9959ceeb7c1.stex" ]
+source_file="res://Assets/Bombs/StunBomb/StunBOmbFrame1.png"
+dest_files=[ "res://.import/StunBOmbFrame1.png-9292b9c4f855207804ec1fe915fd2dc5.stex" ]
 
 [params]
 
