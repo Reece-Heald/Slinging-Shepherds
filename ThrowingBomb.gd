@@ -11,7 +11,8 @@ var isStunBomb = true
 
 var StationaryBomb =  load("res://StationaryBomb.tscn")
 var bombMidpointDetectionResource = load("res://bombMidpointDetection.tscn")
-
+onready var _animated_sprite = $"AnimatedSprite"
+ 
 var bombMidpointDetection  = bombMidpointDetectionResource.instance( )
 #var newNode = bombMidpointDetection.new()
 
@@ -26,13 +27,16 @@ var midPointPosition = BombGameVarables.midPointPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	_animated_sprite.play("default")
 	get_parent().add_child(bombMidpointDetection)
 	bombMidpointDetection.set_global_position(midPointPosition)
 	
 func _init():
+	#$"AnimatedSprite".play() 
 	pass
- 
+	
+	
+	
 func _process(delta): 
 	var distance_to_Target = self.global_position.distance_to(targetPosition) 
 	var distance_to_midpoint = self.global_position.distance_to(midPointPosition)
