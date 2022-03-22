@@ -19,24 +19,23 @@ var velocity = Vector2(0,0)
 
 var isMoving = true
 var targetPosition = GameVarables.targetPos
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 	
 	
  
-func _process(delta):
-	 
+func _process(delta): 
+	var distance_to_Target = self.global_position.distance_to(targetPosition) 
+	if distance_to_Target > 5:
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
 		global_position += velocity * _speed  
 #		print(self.global_position)
 #		print(angle)
-		#var newStationaryBomb 
-		#newStationaryBomb = StationaryBomb.instance( )
-		#get_parent().add_child(newStationaryBomb)
-		#newStationaryBomb.global_postition = self.global_position
+		
 		#self.visible = false
 		 
 		#self.setIsMoving(false)
@@ -46,9 +45,12 @@ func explode():
 
 
 
-
-
-
+func noMove():
+	var newStationaryBomb 
+	newStationaryBomb = StationaryBomb.instance( )
+	get_parent().add_child(newStationaryBomb)
+	newStationaryBomb.set_global_position(self.global_position)
+	self.visible = false
 
 #Getters and setters 
 func getX():
