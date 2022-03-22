@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BombGameVarables="*res://BombGameVarables.gd"
+PlayerHead="*res://Scripts/AutoLoad/player_head.gd"
 
 [input]
 
