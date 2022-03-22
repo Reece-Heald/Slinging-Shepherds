@@ -7,6 +7,12 @@ var screenSizeVert
 const grassLocation = preload("res://Prefabs/Grass.tscn")
 var grassSprite
 var counter
+var position
+var areaSize
+
+func _init():
+	areaSize = get_parent().areaSize
+	position = self.translation
 
 func _ready():
 	counter = 0
@@ -16,8 +22,8 @@ func _ready():
 	
 func _process(delta):
 	if (counter > 100):
-		var posHoriz = randf() * screenSizeHoriz
-		var posVert = randf() * screenSizeVert
+		var posHoriz = self.x + (randf() - .5) * areaSize
+		var posVert = position.y + (randf() - .5) * areaSize
 		grassSprite = grassLocation.instance()
 		grassSprite.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassSprite)

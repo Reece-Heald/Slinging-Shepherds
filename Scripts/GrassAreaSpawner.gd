@@ -1,6 +1,7 @@
 extends Node
 
 export (int) var areaSpawnSpeed = 60
+export (int) var areaSize = 60
 
 var screenSizeHoriz
 var screenSizeVert
@@ -16,8 +17,8 @@ func _ready():
 	
 func _process(delta):
 	if (counter > 100):
-		var posHoriz = randf() * screenSizeHoriz
-		var posVert = randf() * screenSizeVert
+		var posHoriz = randf() * (screenSizeHoriz - areaSize)
+		var posVert = randf() * (screenSizeVert - areaSize)
 		grassArea = grassAreaLocation.instance()
 		grassArea.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassArea)
