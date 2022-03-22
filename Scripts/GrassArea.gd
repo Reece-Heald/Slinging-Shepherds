@@ -11,8 +11,9 @@ var position
 var areaSize
 
 func _init():
-	areaSize = get_parent().areaSize
-	position = self.translation
+	#areaSize = get_parent().areaSize
+	#position = self.translation
+	pass
 
 func _ready():
 	counter = 0
@@ -22,8 +23,10 @@ func _ready():
 	
 func _process(delta):
 	if (counter > 100):
-		var posHoriz = self.x + (randf() - .5) * areaSize
-		var posVert = position.y + (randf() - .5) * areaSize
+		#var posHoriz = self.x + (randf() - .5) * areaSize
+		#var posVert = self.y + (randf() - .5) * areaSize
+		var posHoriz = screenSizeHoriz * randf()
+		var posVert = screenSizeVert * randf()
 		grassSprite = grassLocation.instance()
 		grassSprite.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassSprite)
