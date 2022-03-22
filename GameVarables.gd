@@ -7,6 +7,10 @@ var bombMoving = false
 
 var targetPos = Vector2()
 
+var midPointPos = Vector2()
+
+var scaleRatio = 0
+
 func addBombsInInventory(bomb):
 	bombsInInventory.insert(bomb)
 	

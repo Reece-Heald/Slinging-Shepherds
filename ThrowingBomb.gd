@@ -10,7 +10,10 @@ var isStunBomb = true
 #var singleton = preload("res://GameVarables.gd")
 
 var StationaryBomb =  load("res://StationaryBomb.tscn")
-export var _scaleRatio = Vector2(1,1)
+var bombMidpointDetectionResource = load("res://bombMidpointDetection.tscn")
+
+var bombMidpointDetection  = bombMidpointDetectionResource.instance( )
+#var newNode = bombMidpointDetection.new()
 
 var damage = 5
 var bombRange = 15
@@ -19,25 +22,38 @@ var velocity = Vector2(0,0)
 
 var isMoving = true
 var targetPosition = GameVarables.targetPos
+var midPointPosition = GameVarables.midPointPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	get_parent().add_child(bombMidpointDetection)
+	bombMidpointDetection.set_global_position(midPointPosition)
+	
+func _init():
 	pass
-	
-	
  
 func _process(delta): 
 	var distance_to_Target = self.global_position.distance_to(targetPosition) 
+	var distance_to_midpoint = self.global_position.distance_to(midPointPosition)
 	if distance_to_Target > 5:
+		
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
+		self.scale.x += GameVarables.scaleRatio
+		self.scale.y += GameVarables.scaleRatio
+		
+		#print("the end point is: ", self.global_position)
+		#print("the midpoint is: ", midPointPosition)
+		#print("distance to mid: ", distance_to_midpoint)
 		global_position += velocity * _speed  
 #		print(self.global_position)
 #		print(angle)
-		
+	if distance_to_Target < 5 and is_instance_valid(bombMidpointDetection):
+		bombMidpointDetection.queue_free()
 		#self.visible = false
-		 
+
 		#self.setIsMoving(false)
  
 func explode():
