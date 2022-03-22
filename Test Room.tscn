@@ -60,6 +60,9 @@ region_rect = Rect2( 0, 0, 2048, 1200 )
 [node name="GrassAreaSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
+[node name="GrassAreaSpawnTimer" type="Timer" parent="GrassAreaSpawner"]
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 780, 389 )
 run_speed = 800.0
@@ -114,4 +117,5 @@ wait_time = 2.0
 autostart = true
 script = ExtResource( 7 )
 
+[connection signal="timeout" from="GrassAreaSpawner/GrassAreaSpawnTimer" to="GrassAreaSpawner" method="_on_GrassAreaSpawnTimer_timeout"]
 [connection signal="timeout" from="PlayerDamager" to="PlayerDamager" method="_on_PlayerDamager_timeout"]
