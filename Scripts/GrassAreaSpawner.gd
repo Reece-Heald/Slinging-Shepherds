@@ -9,6 +9,9 @@ const grassAreaLocation = preload("res://Prefabs/GrassArea.tscn")
 var grassArea
 var counter
 
+
+
+
 func _ready():
 	counter = 0
 	
