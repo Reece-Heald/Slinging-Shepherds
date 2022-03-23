@@ -12,9 +12,11 @@ func _ready():
 	counter = 0
 	set_texture(grow1)
 
-func _process(delta):
-	if (counter > timeToSprite2):
+
+func _on_Timer_timeout():
+	if (texture.get_width() == grow1.get_width()):
 		set_texture(grow2)
-	if (counter > timeToSprite3):
+	if (texture.get_width() == grow2.get_width()):
 		set_texture(grow3)
-	counter += delta
+	if (texture.get_width() == grow3.get_width()):
+		$Timer.stop()

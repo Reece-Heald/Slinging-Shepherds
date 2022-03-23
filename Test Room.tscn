@@ -102,7 +102,7 @@ shape = SubResource( 1 )
 visible = false
 
 [node name="Sheep" type="KinematicBody2D" parent="."]
-position = Vector2( 317, 254 )
+position = Vector2( 636, 214 )
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sheep"]
