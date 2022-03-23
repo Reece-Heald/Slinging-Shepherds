@@ -9,7 +9,7 @@ export (int) var timeToSprite3 = 4
 
 func _ready():
 	set_texture(grow1)
-	print(position)
+	print("grass spawns:", position)
 
 
 func _on_Timer_timeout():
