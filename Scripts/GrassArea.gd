@@ -19,7 +19,7 @@ func _ready():
 	
 
 
-
+# run every time timer ends
 func _on_grassSpawn_timeout():
 	if (numOfGrass < maxNumOfGrass):
 		var posHoriz = position.x + ((randf() - .5) * areaSize)
@@ -28,3 +28,8 @@ func _on_grassSpawn_timeout():
 		grassSprite.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassSprite)
 		numOfGrass += 1
+#	else:
+#		get_children()[0].stop()
+
+func GrassDies():
+	numOfGrass -= 1

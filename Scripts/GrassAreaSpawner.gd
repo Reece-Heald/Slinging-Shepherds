@@ -14,12 +14,12 @@ var numOfAreas = 0
 
 func _ready():
 	
-	randomize()
+#	randomize()
 	
 	screenSizeHoriz = get_viewport().get_visible_rect().size.x
 	screenSizeVert = get_viewport().get_visible_rect().size.y
-	print(screenSizeHoriz)
-	print(screenSizeVert)
+	print("screen size horizontal: ",screenSizeHoriz)
+	print("screen size vertical: ",screenSizeVert)
 	
 
 
