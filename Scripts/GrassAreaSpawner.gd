@@ -20,10 +20,10 @@ var grassArea
 var numOfAreas = 0
 
 
-
+var posHoriz = -10
+var posVert = -10
 
 func _ready():
-	
 	randomize()
 	
 	screenSizeHoriz = get_viewport().get_visible_rect().size.x
@@ -32,16 +32,19 @@ func _ready():
 #	print("screen size vertical: ", screenSizeVert)
 	
 
+func _draw():
+	draw_circle(Vector2(posHoriz,posVert), 5, Color(0.55, 0, 0, 1))
 
 func _on_GrassAreaSpawnTimer_timeout():
 	if (numOfAreas < maxNumOfAreas):
-		var posHoriz = randf() * (screenSizeHoriz - areaSize) + (.5 * areaSize)
-		var posVert = randf() * (screenSizeVert - areaSize) + (.5 * areaSize)
-#		print(posHoriz)
+		posHoriz = randf() * (screenSizeHoriz - areaSize) + (.5 * areaSize)
+		posVert = randf() * (screenSizeVert - areaSize) + (.5 * areaSize)
 		grassArea = grassAreaLocation.instance()
 		grassArea.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassArea)
 		numOfAreas += 1
+		_draw()
+		update()
 	
 #func _input(event):
 #   # Mouse in viewport coordinates.

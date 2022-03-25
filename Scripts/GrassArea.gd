@@ -13,10 +13,8 @@ var areaSize
 
 func _ready():
 #	print("Grass area spawned: ", position)
-	
 	areaSize = get_parent().areaSize
 	
-
 
 # run every time timer ends
 func _on_grassSpawn_timeout():
