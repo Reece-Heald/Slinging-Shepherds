@@ -1,3 +1,5 @@
+# requires parent function GrassDies()
+
 extends Sprite
 
 var grow1 = preload("res://Sprites/Grass/Grass1.png")
@@ -12,7 +14,7 @@ var stage = 1
 
 func _ready():
 	set_texture(grow1)
-	print("grass spawns: ", position)
+#	print("grass spawns: ", position)
 
 
 
@@ -25,6 +27,6 @@ func _on_Timer_timeout():
 	if (stage == timeToDeath):
 		$Timer.stop()
 		get_parent().GrassDies()
-		print("grass dies: ", position)
+#		print("grass dies: ", position)
 		queue_free()
 	stage += 1

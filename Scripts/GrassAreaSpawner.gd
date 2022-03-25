@@ -1,4 +1,11 @@
-extends Node
+# What I know about the grass spawning issue:
+# all 5 grass areas spawn and all of their positions are in frame
+# all 6 grass sprites in each area spawns with positions in frame
+# getting mouse position when over a grass sprite returns the correct position
+# grass spawned at cursor position is visible
+
+
+extends Node2D
 
 export (int) var areaSize = 60
 export (int) var maxNumOfAreas = 5

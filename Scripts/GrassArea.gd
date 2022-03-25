@@ -12,8 +12,8 @@ var areaSize
 
 
 func _ready():
-	
-	randomize()
+	print("Grass area spawned: ", position)
+#	randomize()
 	
 	areaSize = get_parent().areaSize
 	
