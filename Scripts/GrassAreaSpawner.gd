@@ -1,6 +1,9 @@
 # What I know about the grass spawning issue:
-# all 5 grass areas spawn and all of their positions are in frame
-# all 6 grass sprites in each area spawns with positions in frame
+# not all grass spawned can be seen in the player view
+# when the player view is expanded some more grass can be seen?
+# when player view is expanded and new area clicked on it has unusual x/y position
+# all 5 grass areas spawn and all of their x/y positions are numerically in frame
+# all 6 grass sprites in each area spawns with x/y positions numerically in frame
 # getting mouse position when over a grass sprite returns the correct position
 # grass spawned at cursor position is visible
 
@@ -21,12 +24,12 @@ var numOfAreas = 0
 
 func _ready():
 	
-#	randomize()
+	randomize()
 	
 	screenSizeHoriz = get_viewport().get_visible_rect().size.x
 	screenSizeVert = get_viewport().get_visible_rect().size.y
-	print("screen size horizontal: ",screenSizeHoriz)
-	print("screen size vertical: ",screenSizeVert)
+#	print("screen size horizontal: ", screenSizeHoriz)
+#	print("screen size vertical: ", screenSizeVert)
 	
 
 
@@ -40,7 +43,7 @@ func _on_GrassAreaSpawnTimer_timeout():
 		add_child(grassArea)
 		numOfAreas += 1
 	
-func _input(event):
-   # Mouse in viewport coordinates.
-   if event is InputEventMouseButton:
-	   print("Mouse Click/Unclick at: ", event.position)
+#func _input(event):
+#   # Mouse in viewport coordinates.
+#   if event is InputEventMouseButton:
+#	   print("Mouse Click/Unclick at: ", event.position)
