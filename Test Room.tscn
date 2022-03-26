@@ -20,6 +20,7 @@ extents = Vector2( 10, 300 )
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
+z_index = -1
 texture = ExtResource( 6 )
 centered = false
 region_enabled = true
@@ -27,6 +28,10 @@ region_rect = Rect2( 0, 0, 2048, 1200 )
 
 [node name="GrassAreaSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
+maxNumOfAreas = 10
+
+[node name="GrassAreaSpawnTimer" type="Timer" parent="GrassAreaSpawner"]
+autostart = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 780, 389 )
