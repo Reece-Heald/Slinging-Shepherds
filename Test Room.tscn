@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GrassAreaSpawner.gd" type="Script" id=2]
 [ext_resource path="res://ThrowingBomb.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Sheep.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Sheep/SpriteSheets/sheep_walk.png" type="Texture" id=5]
+[ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
 [ext_resource path="res://PlayerDamager.gd" type="Script" id=7]
 
@@ -16,37 +15,6 @@ extents = Vector2( 600, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 384, 0, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 384, 128, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 384, 256, 128, 128 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 384, 384, 128, 128 )
-
-[sub_resource type="SpriteFrames" id=9]
-animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CircleShape2D" id=4]
-radius = 7.5
 
 [node name="Test Room" type="Node2D"]
 
@@ -98,20 +66,12 @@ shape = SubResource( 1 )
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="Sheep" type="KinematicBody2D" parent="."]
-position = Vector2( 317, 254 )
-script = ExtResource( 4 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Sheep"]
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sheep"]
-shape = SubResource( 4 )
-
 [node name="PlayerDamager" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 script = ExtResource( 7 )
+
+[node name="Sheep" parent="." instance=ExtResource( 4 )]
+position = Vector2( 815, 326 )
 
 [connection signal="timeout" from="PlayerDamager" to="PlayerDamager" method="_on_PlayerDamager_timeout"]
