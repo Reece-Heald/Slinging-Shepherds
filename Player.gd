@@ -21,6 +21,9 @@ var bomb = load("res://Bomb.tscn") as PackedScene
 
 #bomb variables
 var ThrowingBomb = load("res://ThrowingBomb.tscn")
+onready var bombSlot1 = get_parent().get_node("UI/BombSlotSprite1")
+onready var bombSlot2 = get_parent().get_node("UI/BombSlotSprite2")
+onready var bombSlot3 = get_parent().get_node("UI/BombSlotSprite3")
 var bomb_speed := 5
 
 var is_in_no_throw_zone : bool = false
@@ -72,6 +75,10 @@ func throw_bomb():
 		BombGameVarables.midPointPos = Vector2(midPosX,midPosY)
 		BombGameVarables.scaleRatio = .08
 		BombGameVarables.bombsInInventory.clear()
+		bombSlot1.visible = false
+		bombSlot2.visible = false
+		bombSlot3.visible = false
+		#get_parent().remove_child(stationaryBomb)
 		#print("the start point it: ",self.global_position)
 		var newBomb = ThrowingBomb.instance()
 		newBomb.global_position = self.global_position

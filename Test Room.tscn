@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GrassAreaSpawner.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
 [ext_resource path="res://StationaryBomb.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 600, 10 )
@@ -54,6 +55,7 @@ shape = SubResource( 2 )
 position = Vector2( 522, 600 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
+position = Vector2( -3, 3 )
 shape = SubResource( 3 )
 
 [node name="WallBottom2" type="StaticBody2D" parent="Walls"]
@@ -90,14 +92,23 @@ margin_top = 546.0
 margin_right = 1006.0
 margin_bottom = 583.0
 
-[node name="BombSlot1" type="Node2D" parent="UI"]
+[node name="BombSlotSprite1" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 159, 19 )
+scale = Vector2( 0.042, 0.036 )
+texture = ExtResource( 7 )
 
-[node name="BombSlot2" type="Node2D" parent="UI"]
+[node name="BombSlotSprite2" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 138, 19 )
+scale = Vector2( 0.042, 0.036 )
+texture = ExtResource( 7 )
 
-[node name="BombSlot3" type="Node2D" parent="UI"]
+[node name="BombSlotSprite3" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 114, 19 )
+scale = Vector2( 0.042, 0.036 )
+texture = ExtResource( 7 )
 
 [node name="StationaryBomb" parent="." instance=ExtResource( 5 )]
 position = Vector2( 913, 387 )
