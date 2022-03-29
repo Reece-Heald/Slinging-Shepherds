@@ -12,7 +12,7 @@ var midPointPos = Vector2()
 var scaleRatio = 0
 
 func addBombsInInventory(bomb):
-	bombsInInventory.insert(bomb)
+	bombsInInventory.append(bomb)
 	
 func getBombsInInventory():
 	return self.bombsInInventory

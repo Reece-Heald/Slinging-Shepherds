@@ -1,10 +1,12 @@
-extends KinematicBody2D
+extends Sprite
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var bombSpot1 = get_parent().get_node("UI/BombSlot1")
+onready var bombSpot2 = get_parent().get_node("UI/BombSlot2")
+onready var bombSpot3 = get_parent().get_node("UI/BombSlot3")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,13 +15,24 @@ func _ready():
 #	self.global_position = position
 	
 	
-	
-func _on_Area2D_body_entered(body):
-	if(body.name == "Player"):
-		GameVarables.addBombsInInventory(body)
-		print("collided with player, adding to singleton list of bombs")
-		self.visible = false
-		queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Area2D_body_entered(body):
+	if(body.name == "Player"):
+		BombGameVarables.addBombsInInventory(self)
+		print("bomb collided with player, adding to singleton list of bombs")
+		#self.visible = false
+		#queue_free()
+		print(BombGameVarables.bombsInInventory.size())
+		if(BombGameVarables.bombsInInventory.size() == 1):
+			self.global_position = bombSpot1.global_position
+			remove_child($"Area2D")
+		elif(BombGameVarables.bombsInInventory.size() == 2):
+			self.global_position = bombSpot2.global_position
+			remove_child($"Area2D")
+		elif(BombGameVarables.bombsInInventory.size() == 3):
+			self.global_position = bombSpot3.global_position
+			remove_child($"Area2D")
