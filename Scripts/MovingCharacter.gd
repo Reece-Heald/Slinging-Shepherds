@@ -20,11 +20,11 @@ export var spirite_holder : NodePath
 
 
 #flags and such
-enum {IDLE, MOVING, STOPPED}
+enum {IDLE, MOVING}
 var state = IDLE
 #player movement flags
 var is_target_in_stop_zone = false
-var is_target_on_screen = false
+var is_target_on_screen = true
 
 
 func _ready():

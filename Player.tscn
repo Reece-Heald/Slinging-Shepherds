@@ -254,3 +254,9 @@ margin_top = -24.0
 margin_right = -11.0
 margin_bottom = -24.0
 rect_scale = Vector2( 0.25, 0.25 )
+
+[node name="PositionUpdateTimer" type="Timer" parent="."]
+wait_time = 0.125
+autostart = true
+
+[connection signal="timeout" from="PositionUpdateTimer" to="." method="_on_PositionUpdateTimer_timeout"]

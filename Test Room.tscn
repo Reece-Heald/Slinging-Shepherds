@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GrassAreaSpawner.gd" type="Script" id=2]
 [ext_resource path="res://ThrowingBomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
-[ext_resource path="res://PlayerDamager.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 600, 10 )
@@ -71,12 +70,14 @@ shape = SubResource( 1 )
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="PlayerDamager" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-script = ExtResource( 7 )
-
 [node name="Sheep" parent="." instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
 
-[connection signal="timeout" from="PlayerDamager" to="PlayerDamager" method="_on_PlayerDamager_timeout"]
+[node name="Sheep2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 665, 279 )
+
+[node name="Sheep3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 765, 235 )
+
+[node name="Sheep4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 682, 179 )
