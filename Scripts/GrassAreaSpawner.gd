@@ -45,8 +45,6 @@ func _on_GrassAreaSpawnTimer_timeout():
 		numOfAreas += 1
 		_draw()
 		update()
-	
-#func _input(event):
-#   # Mouse in viewport coordinates.
-#   if event is InputEventMouseButton:
-#	   print("Mouse Click/Unclick at: ", event.position)
+
+func grass_area_destroyed():
+	numOfAreas -= 1

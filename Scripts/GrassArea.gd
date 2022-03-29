@@ -7,28 +7,36 @@ var screenSizeHoriz
 var screenSizeVert
 const grassLocation = preload("res://Prefabs/Grass.tscn")
 var grassSprite
-var numOfGrass = 0
+var numOfGrass = 1
 var areaSize
 
 
 func _ready():
-#	print("Grass area spawned: ", position)
 	areaSize = get_parent().areaSize
-	
+	create_grass()
 
 # run every time timer ends
 func _on_grassSpawn_timeout():
+	if (numOfGrass == 0):
+		destroy_area()
 	if (numOfGrass < maxNumOfGrass):
-#		var posHoriz = position.x + ((randf() - .5) * areaSize)
-#		var posVert = position.y + ((randf() - .5) * areaSize)
-		var posHoriz = (randf() - .5) * areaSize
-		var posVert = (randf() - .5) * areaSize
-		grassSprite = grassLocation.instance()
-		grassSprite.set_global_position(Vector2(posHoriz, posVert))
-		add_child(grassSprite)
 		numOfGrass += 1
-#	else:
-#		get_children()[0].stop()
+		create_grass()
 
-func GrassDies():
+
+func grass_dies():
 	numOfGrass -= 1
+
+
+func create_grass():
+	var posHoriz = (randf() - .5) * areaSize
+	var posVert = (randf() - .5) * areaSize
+	grassSprite = grassLocation.instance()
+	grassSprite.set_global_position(Vector2(posHoriz, posVert))
+	add_child(grassSprite)
+
+func destroy_area():
+	get_parent().grass_area_destroyed()
+	queue_free()
+
+

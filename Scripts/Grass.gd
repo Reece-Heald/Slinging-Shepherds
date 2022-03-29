@@ -8,14 +8,11 @@ var grow3 = preload("res://Sprites/Grass/Grass3.png")
 
 export (int) var timeToSprite2 = 3
 export (int) var timeToSprite3 = 6
-#export (int) var timeToDeath = 10
 
 var stage = 1
 
 func _ready():
 	set_texture(grow1)
-#	print("grass spawns: ", position)
-
 
 
 # every second
@@ -25,11 +22,6 @@ func _on_Timer_timeout():
 	if (stage == timeToSprite3):
 		set_texture(grow3)
 		$Timer.stop()
-#	if (stage == timeToDeath):
-#		$Timer.stop()
-#		get_parent().GrassDies()
-##		print("grass dies: ", position)
-#		queue_free()
 	stage += 1
 	
 
@@ -37,5 +29,5 @@ func _on_Timer_timeout():
 func _input(event):
 	if event is InputEventMouseButton:
 		if (abs(event.position.x - global_position.x) < 10 && abs(event.position.y - global_position.y) < 10):
-			get_parent().GrassDies()
+			get_parent().grass_dies()
 			queue_free()
