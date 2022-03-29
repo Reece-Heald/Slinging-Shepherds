@@ -118,3 +118,5 @@ position = Vector2( 630, 453 )
 
 [node name="StationaryBomb3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 813, 483 )
+
+[connection signal="timeout" from="GrassAreaSpawner/GrassAreaSpawnTimer" to="GrassAreaSpawner" method="_on_GrassAreaSpawnTimer_timeout"]
