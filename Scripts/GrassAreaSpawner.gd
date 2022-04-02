@@ -39,6 +39,9 @@ func _on_GrassAreaSpawnTimer_timeout():
 	if (numOfAreas < maxNumOfAreas):
 		posHoriz = randf() * (screenSizeHoriz - areaSize) + (.5 * areaSize)
 		posVert = randf() * (screenSizeVert - areaSize) + (.5 * areaSize)
+#		makes grass only spawn on right screen
+		posHoriz = (posHoriz * .5) + (screenSizeHoriz * .5)
+		
 		grassArea = grassAreaLocation.instance()
 		grassArea.set_global_position(Vector2(posHoriz, posVert))
 		add_child(grassArea)
