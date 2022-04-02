@@ -4,6 +4,7 @@ export var perterbation_scale : float = PI/3
 export var look_back_number : int = 8
 export var herding_radius : float = 90
 export var debug_draw : bool = false
+export var look_at_player_num : int = 1
 var connected = false
 var direction = 0
 
@@ -12,7 +13,7 @@ func _ready():
 	set_process(true)
 	
 	if PlayerHead.is_body_connected():
-		PlayerHead.get_body().connect("player_position", self, "_player_position_updated")
+		PlayerHead.get_body(look_at_player_num).connect("player_position", self, "_player_position_updated")
 	
 	_on_Turn_Timer_timeout()
 

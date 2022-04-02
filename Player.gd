@@ -2,12 +2,16 @@ extends MovingCharacter
 class_name Player
 
 export var debug_draw : bool = false
+export var use_controller : bool = false
+export var player_prefix : String = "p1"
 
 #signals
 var positions : Array = []
 signal player_position(who, positions)
 
 #player throwing parameters
+export var controller_throw_base_scale : float = 60
+export var controller_throw_extension_scale : float = 90
 export var draw_back_scale = 60.0
 export var draw_back_power = .75
 export var no_throw_radius = 32
@@ -36,13 +40,35 @@ var init_mouse_pos : Vector2 = Vector2(0,0)
 var throw_end_pos : Vector2
 
 func _ready():
-	PlayerHead.connect_body(self)
+	target_pos = position
+	PlayerHead.connect_body(self, int(player_prefix[1]))
 	set_process(true)
 
 func _process(delta):
 	._process(delta)
 	
-	#if state == THROWING:
+	#update controler scale if throwing
+	if use_controller:
+		#get direction and set target positon with it
+		var direction = Input.get_vector(player_prefix + "_move_left", player_prefix + "_move_right", player_prefix + "_move_up", player_prefix + "_move_down")
+		
+		#if we are throwing
+		if Input.is_action_just_pressed(player_prefix + "_throw"):
+			state = THROWING
+			init_mouse_pos = global_position
+		if Input.is_action_just_released(player_prefix + "_throw"):
+			if direction != Vector2(0,0): throw_bomb()
+			controller_vector_scale = base_controller_vector_scale
+			state = IDLE
+		if Input.is_action_just_pressed(player_prefix + "_throw"):
+				controller_vector_scale = controller_throw_base_scale
+		if Input.is_action_pressed(player_prefix + "_extend_1"):
+				controller_vector_scale += controller_throw_extension_scale * delta
+		if Input.is_action_pressed(player_prefix + "_extend_2"):
+				controller_vector_scale -= controller_throw_extension_scale * delta
+		controller_vector_scale = max(1,controller_vector_scale)
+		target_pos = global_position + (controller_vector_scale*direction)
+
 	update()
 
 #draw stuff
@@ -86,28 +112,32 @@ func throw_bomb():
 		get_parent().add_child(newBomb)
 		#newBomb.noMove()
 
+const base_controller_vector_scale = 30
+var controller_vector_scale = base_controller_vector_scale
 func _input(event):
-	#if mouse do thing
-	if event is InputEventMouse:
-		target_pos = event.position #update mouse position
-		if target_pos.distance_to(init_mouse_pos) < no_throw_radius : is_in_no_throw_zone = true
-		else : is_in_no_throw_zone = false
+	#if using keyboard controls
+	if(not use_controller):
+		#if mouse do thing
+		if event is InputEventMouse:
+			target_pos = event.position #update mouse position
+			if target_pos.distance_to(init_mouse_pos) < no_throw_radius : is_in_no_throw_zone = true
+			else : is_in_no_throw_zone = false
+			
+			if event is InputEventMouseButton: #if mouse button happened
+				if (event as InputEventMouseButton).button_index == 1: #if that button is left button
+					if event.pressed: 
+						state = THROWING #if pressed state is throwing
+						init_mouse_pos = target_pos #set the starting mouse pos
+					if not event.pressed:
+						throw_bomb()
+						state = IDLE #if released state is idle
+						update() #makes sure to undraw line
 		
-		if event is InputEventMouseButton: #if mouse button happened
-			if (event as InputEventMouseButton).button_index == 1: #if that button is left button
-				if event.pressed: 
-					state = THROWING #if pressed state is throwing
-					init_mouse_pos = target_pos #set the starting mouse pos
-				if not event.pressed:
-					throw_bomb()
-					state = IDLE #if released state is idle
-					update() #makes sure to undraw line
-	
-	#make stopping happen if space is hit
-	if event is InputEventKey:
-		if event.scancode == KEY_SPACE:
-			if event.pressed and state == MOVING: state = STOPPED
-			if not event.pressed and state == STOPPED: state = IDLE
+		#make stopping happen if space is hit
+		if event is InputEventKey:
+			if event.scancode == KEY_SPACE:
+				if event.pressed and state == MOVING: state = STOPPED
+				if not event.pressed and state == STOPPED: state = IDLE
 
 
 #make sure the mouse is on screen

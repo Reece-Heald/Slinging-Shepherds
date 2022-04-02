@@ -28,6 +28,7 @@ var is_target_on_screen = true
 
 
 func _ready():
+	target_pos = position
 	set_process(true)
 
 func _process(delta):
