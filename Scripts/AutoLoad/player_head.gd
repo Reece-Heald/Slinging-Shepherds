@@ -18,20 +18,24 @@ func get_heart_ui() -> HeartUI:
 
 
 #----------------
-#     BODY
+#     BODY(s)
 #----------------
 #variables
-var _body : Player
+var _body_1 : Player
+var _body_2 : Player
 
 #functions
 func is_body_connected() -> bool: #check if this script's body variable is filled
-	return _body != null
+	return _body_1 != null and _body_2 != null
 
-func connect_body(body : Player): #fill this scripts body variable
-	_body = body
+func connect_body(body : Player, num): #fill this scripts body variable
+	if num == 1: _body_1 = body
+	if num == 2: _body_2 = body
 
-func get_body() -> Player:
-	return _body
+func get_body(num) -> Player:
+	if num == 1: return _body_1
+	if num == 2: return _body_2
+	return null
 
 #----------------
 #     HEALTH
