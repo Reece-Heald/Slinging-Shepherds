@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ThrowingBomb.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=2]
@@ -9,12 +9,18 @@
 [ext_resource path="res://Assets/Bombs/Explosion/explosionFrame3.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmbFrame1.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmbFrame2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Bombs/BasicBomb/noFuseBomb.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), null, null ],
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": false,
-"name": "default",
+"name": "litFuse",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), null, null ],
+"loop": false,
+"name": "explosion",
 "speed": 5.0
 } ]
 
@@ -29,12 +35,13 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 scale = Vector2( 0.0427223, 0.0364571 )
-texture = ExtResource( 2 )
+texture = ExtResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -3 )
 scale = Vector2( 0.0469235, 0.0469235 )
 frames = SubResource( 3 )
+animation = "litFuse"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -27,7 +27,7 @@ var midPointPosition = BombGameVarables.midPointPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_animated_sprite.play("default")
+	
 	get_parent().add_child(bombMidpointDetection)
 	bombMidpointDetection.set_global_position(midPointPosition)
 	
@@ -54,23 +54,27 @@ func _process(delta):
 		global_position += velocity * _speed  
 #		print(self.global_position)
 #		print(angle)
+	if BombGameVarables.isFuseLit == true:
+		litBomb()
 	if distance_to_Target < 5 and is_instance_valid(bombMidpointDetection):
 		bombMidpointDetection.queue_free()
+		hitTarget()
 		#self.visible = false
-
+	
 		#self.setIsMoving(false)
+	 
  
-func explode():
-	pass
 
 
-
-func noMove():
-	var newStationaryBomb 
-	newStationaryBomb = StationaryBomb.instance( )
-	get_parent().add_child(newStationaryBomb)
-	newStationaryBomb.set_global_position(self.global_position)
-	self.visible = false
+func hitTarget():
+	#var distance_to_Target = self.global_position.distance_to(targetPosition) 
+	
+	#print("hit target")
+	_animated_sprite.play("explosion")
+	
+func litBomb( ):
+	print("printState")
+	_animated_sprite.play("litFuse")
 
 #Getters and setters 
 func getX():
