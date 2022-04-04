@@ -96,6 +96,7 @@ position = Vector2( 765, 235 )
 position = Vector2( 682, 179 )
 
 [node name="UI" type="Control" parent="."]
+visible = false
 margin_left = 824.0
 margin_top = 546.0
 margin_right = 1006.0
