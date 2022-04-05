@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud-5992791_1280.png-5968c73103405b6c419810db79201e7e.stex"
+path="res://.import/fence.png-1c0c4d55bbe2eead992faf358fa675fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/New folder/cloud-5992791_1280.png"
-dest_files=[ "res://.import/cloud-5992791_1280.png-5968c73103405b6c419810db79201e7e.stex" ]
+source_file="res://Sprites/Fence/fence.png"
+dest_files=[ "res://.import/fence.png-1c0c4d55bbe2eead992faf358fa675fb.stex" ]
 
 [params]
 
