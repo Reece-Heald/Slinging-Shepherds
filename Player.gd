@@ -10,8 +10,8 @@ var positions : Array = []
 signal player_position(who, positions)
 
 #player throwing parameters
-export var controller_throw_base_scale : float = 60
-export var controller_throw_extension_scale : float = 90
+export var controller_base_scale : float = 30
+export var controller_throw_extension_scale : float = 280
 export var draw_back_scale = 60.0
 export var draw_back_power = .75
 export var no_throw_radius = 32
@@ -58,17 +58,23 @@ func _process(delta):
 			init_mouse_pos = global_position
 		if Input.is_action_just_released(player_prefix + "_throw"):
 			if direction != Vector2(0,0): throw_bomb()
-			controller_vector_scale = base_controller_vector_scale
 			state = IDLE
-		if Input.is_action_just_pressed(player_prefix + "_throw"):
-				controller_vector_scale = controller_throw_base_scale
 		if Input.is_action_pressed(player_prefix + "_extend_1"):
 				controller_vector_scale += controller_throw_extension_scale * delta
 		if Input.is_action_pressed(player_prefix + "_extend_2"):
 				controller_vector_scale -= controller_throw_extension_scale * delta
-		controller_vector_scale = max(1,controller_vector_scale)
-		target_pos = global_position + (controller_vector_scale*direction)
-
+		if state == THROWING :
+			controller_vector_scale = max(1,controller_vector_scale)
+			target_pos = global_position + (controller_vector_scale*direction)
+		else:
+			target_pos = global_position + (controller_base_scale*direction)
+	
+	#emit if moving
+	if state == MOVING:
+		$Particles2D.emitting = true
+	else:
+		$Particles2D.emitting = false
+	
 	update()
 
 #draw stuff
