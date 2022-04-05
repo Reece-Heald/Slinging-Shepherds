@@ -37,13 +37,11 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
-debug_draw = true
 use_controller = true
 
 [node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 286, 300 )
 run_speed = 800.0
-debug_draw = true
 use_controller = true
 player_prefix = "p2"
 
