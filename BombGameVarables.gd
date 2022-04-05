@@ -11,6 +11,8 @@ var midPointPos = Vector2()
 
 var scaleRatio = 0
 
+var isFuseLit = false
+
 func addBombsInInventory(bomb):
 	bombsInInventory.append(bomb)
 	
@@ -22,4 +24,5 @@ func setBombMoving(input):
 func getBombMoving():
 	return bombMoving
 
-
+func getIsFuseLit():
+	return isFuseLit

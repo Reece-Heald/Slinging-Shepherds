@@ -11,7 +11,12 @@ var isStunBomb = true
 
 var StationaryBomb =  load("res://StationaryBomb.tscn")
 var bombMidpointDetectionResource = load("res://bombMidpointDetection.tscn")
-onready var _animated_sprite = $"AnimatedSprite"
+
+var explosionArea = load("res://ExplosionArea.tscn")
+
+onready var _animated_fuse = $"AnimatedSprite"
+onready var _animated_explosion = $"AnimatedSprite2"
+onready var default_sprite = $"Sprite"
  
 var bombMidpointDetection  = bombMidpointDetectionResource.instance( )
 #var newNode = bombMidpointDetection.new()
@@ -27,13 +32,18 @@ var midPointPosition = BombGameVarables.midPointPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_animated_sprite.play("default")
 	get_parent().add_child(bombMidpointDetection)
 	bombMidpointDetection.set_global_position(midPointPosition)
-	
+	default_sprite.visible = true
+	#print(name)
+	resetBombSprite()
 func _init():
 	#$"AnimatedSprite".play() 
+	#self.name = "ThrowingBomb"
+	#_animated_explosion.visible = false
+	#default_sprite.visible = true 
 	pass
+	
 	
 	
 	
@@ -41,7 +51,6 @@ func _process(delta):
 	var distance_to_Target = self.global_position.distance_to(targetPosition) 
 	var distance_to_midpoint = self.global_position.distance_to(midPointPosition)
 	if distance_to_Target > 5:
-		
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
@@ -54,23 +63,42 @@ func _process(delta):
 		global_position += velocity * _speed  
 #		print(self.global_position)
 #		print(angle)
+	if BombGameVarables.isFuseLit == true:
+		litBomb()
 	if distance_to_Target < 5 and is_instance_valid(bombMidpointDetection):
 		bombMidpointDetection.queue_free()
+		bombMidpointDetection.destroy_self()
+	if distance_to_Target < 5:
+		hitTarget()
 		#self.visible = false
-
+		
 		#self.setIsMoving(false)
- 
-func explode():
-	pass
+
+func hitTarget():
+	#var distance_to_Target = self.global_position.distance_to(targetPosition) 
+	#print("hit target")
+	_animated_explosion.visible = true
+	_animated_fuse.visible = false
+	_animated_explosion.play("explosion")
+	if _animated_explosion.playing == false:
+		self.queue_free()
+	
+	
+	var newExplosion = explosionArea.instance()
+	newExplosion.global_position = self.global_position
+	get_parent().add_child(newExplosion)
+	
+func litBomb( ):
+	default_sprite.visible = false
+	_animated_fuse.visible = true
+	_animated_fuse.play("litFuse")
+
+func resetBombSprite():
+	_animated_fuse.visible = false
+	_animated_explosion.visible = false
+	default_sprite.visible = true 
 
 
-
-func noMove():
-	var newStationaryBomb 
-	newStationaryBomb = StationaryBomb.instance( )
-	get_parent().add_child(newStationaryBomb)
-	newStationaryBomb.set_global_position(self.global_position)
-	self.visible = false
 
 #Getters and setters 
 func getX():

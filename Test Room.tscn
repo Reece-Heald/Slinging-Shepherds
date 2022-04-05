@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/GrassAreaSpawner.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://StationaryBomb.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=7]
+[ext_resource path="res://Assets/test Dummy.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 600, 10 )
@@ -16,6 +17,9 @@ extents = Vector2( 600, 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 20.0
 
 [node name="Test Room" type="Node2D"]
 
@@ -29,19 +33,21 @@ region_rect = Rect2( 0, 0, 2048, 1200 )
 
 [node name="GrassAreaSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
-maxNumOfAreas = 10
+maxNumOfAreas = 6
 
 [node name="GrassAreaSpawnTimer" type="Timer" parent="GrassAreaSpawner"]
+wait_time = 6.0
 autostart = true
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
-use_controller = true
+debug_draw = true
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
+[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 286, 300 )
 run_speed = 800.0
+debug_draw = true
 use_controller = true
 player_prefix = "p2"
 
@@ -125,5 +131,22 @@ position = Vector2( 630, 453 )
 
 [node name="StationaryBomb3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 813, 483 )
+
+[node name="testDummy" type="KinematicBody2D" parent="."]
+position = Vector2( 594, 167 )
+
+[node name="Sprite" type="Sprite" parent="testDummy"]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.100746, 0.104621 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testDummy"]
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="timeout" from="GrassAreaSpawner/GrassAreaSpawnTimer" to="GrassAreaSpawner" method="_on_GrassAreaSpawnTimer_timeout"]

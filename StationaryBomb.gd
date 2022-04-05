@@ -26,10 +26,10 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if(body.name == "Player"):
 		BombGameVarables.addBombsInInventory(self)
-		print("bomb collided with player, adding to singleton list of bombs")
+		#print("bomb collided with player, adding to singleton list of bombs")
 		#self.visible = false
 		#queue_free()
-		print(BombGameVarables.bombsInInventory.size())
+		#print(BombGameVarables.bombsInInventory.size())
 		if(BombGameVarables.bombsInInventory.size() == 1):
 			#self.global_position = bombSpot1.global_position
 			#remove_child($"Area2D")
