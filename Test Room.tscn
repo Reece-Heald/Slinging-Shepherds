@@ -33,17 +33,18 @@ region_rect = Rect2( 0, 0, 2048, 1200 )
 
 [node name="GrassAreaSpawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
-maxNumOfAreas = 10
+maxNumOfAreas = 6
 
 [node name="GrassAreaSpawnTimer" type="Timer" parent="GrassAreaSpawner"]
+wait_time = 6.0
 autostart = true
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
 debug_draw = true
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
+[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 286, 300 )
 run_speed = 800.0
 debug_draw = true
