@@ -42,13 +42,10 @@ autostart = true
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
-debug_draw = true
 
 [node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 286, 300 )
 run_speed = 800.0
-debug_draw = true
-use_controller = true
 player_prefix = "p2"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
