@@ -1,6 +1,5 @@
 extends Node2D
 
-export (int) var grassSpawnSpeed = 60
 export (int) var maxNumOfGrass = 6
 
 var screenSizeHoriz
