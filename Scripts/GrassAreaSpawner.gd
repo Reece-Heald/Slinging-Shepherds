@@ -44,9 +44,10 @@ func _on_GrassAreaSpawnTimer_timeout():
 		
 		grassArea = grassAreaLocation.instance()
 		grassArea.set_global_position(Vector2(posHoriz, posVert))
+		grassArea.set_grow_timer(get_node("grassGrow"))
 		add_child(grassArea)
+		$grassSpawn.connect("timeout", grassArea, "_on_grassSpawn_timeout")
 		numOfAreas += 1
-		_draw()
 		update()
 
 func grass_area_destroyed():

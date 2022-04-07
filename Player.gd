@@ -4,6 +4,7 @@ class_name Player
 export var debug_draw : bool = false
 export var use_controller : bool = false
 export var player_prefix : String = "p1"
+export var player_position_array_length = 8
 
 #signals
 var positions : Array = []
@@ -20,8 +21,6 @@ export var line_width = 5
 export var dot_color : Color = Color(1,1,1)
 export var dot_radius = 5
 
-var bomb = load("res://Bomb.tscn") as PackedScene 
-#var bomb_script = load("res://StunBomb.gd") as Script
 
 #bomb variables
 var ThrowingBomb = load("res://ThrowingBomb.tscn")
@@ -156,5 +155,7 @@ func _notification(what):
 
 func _on_PositionUpdateTimer_timeout():
 	positions.append(global_position)
+	if positions.size() > player_position_array_length:
+		positions.remove(0)
 	emit_signal("player_position", self, positions)
 	update()

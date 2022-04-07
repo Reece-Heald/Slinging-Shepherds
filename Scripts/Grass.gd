@@ -3,8 +3,7 @@
 extends Sprite
 class_name Grass
 
-const bombLocation = preload("res://StationaryBomb.tscn")
-var bomb
+
 
 var grow1 = preload("res://Sprites/Grass/Grass1.png")
 var grow2 = preload("res://Sprites/Grass/Grass2.png")
@@ -47,6 +46,11 @@ func _on_Area2D_body_entered(body):
 #		get_parent().get_parent().get_parent().add_child(bomb)
 #		get_parent().grass_dies()
 #		queue_free()
+
+func die():
+	TheSheepConnection.emit_signal("grass_left_chat",self)
+	get_parent().grass_dies()
+	queue_free()
 
 func _draw():
 	if debug_draw:

@@ -8,7 +8,7 @@ const grassLocation = preload("res://Prefabs/Grass.tscn")
 var grassSprite
 var numOfGrass = 1
 var areaSize
-
+var grow_timer : Timer
 
 func _ready():
 	areaSize = get_parent().areaSize
@@ -32,7 +32,13 @@ func create_grass():
 	var posVert = (randf() - .5) * areaSize
 	grassSprite = grassLocation.instance()
 	grassSprite.set_global_position(Vector2(posHoriz, posVert))
+	grow_timer.connect("timeout",grassSprite, "_on_Timer_timeout")
 	add_child(grassSprite)
+
+func set_grow_timer(gt):
+	print(gt)
+	grow_timer = gt
+	print(grow_timer)
 
 func destroy_area():
 	get_parent().grass_area_destroyed()

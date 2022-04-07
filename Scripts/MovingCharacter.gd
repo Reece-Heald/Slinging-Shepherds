@@ -34,9 +34,8 @@ func _ready():
 func _process(delta):
 	if state == IDLE or state == MOVING:
 		follow_target()
-	
-	update_direction()
-	update_sprite()
+		update_direction()
+		update_sprite()
 
 func follow_target():
 	#make sure mousepos exists
@@ -76,7 +75,7 @@ func update_direction():
 func update_sprite():	
 	#get the nodes from the exported node paths
 	var anim1 = get_node(animation_node_one) as AnimatedSprite
-	var anim2 = get_node(animation_node_two) as AnimatedSprite
+	var anim2 = get_node(animation_node_two) as AnimatedSprite if not animation_node_two.is_empty() else null
 	
 	if anim1 != null :
 		_help_update_sprite(anim1)

@@ -8,4 +8,10 @@ script = ExtResource( 1 )
 [node name="GrassAreaSpawnTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="grassSpawn" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="grassGrow" type="Timer" parent="."]
+
 [connection signal="timeout" from="GrassAreaSpawnTimer" to="." method="_on_GrassAreaSpawnTimer_timeout"]
