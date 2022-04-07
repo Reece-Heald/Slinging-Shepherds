@@ -142,7 +142,9 @@ func _a_grass_has_left_chat(grass):
 		best_grass = null
 
 func _on_Eat_Timer_timeout():
-	best_grass.die()
+	if best_grass != null and is_instance_valid(best_grass):
+		best_grass.die()
+	
 	best_grass = null
 	state = IDLE
 	
