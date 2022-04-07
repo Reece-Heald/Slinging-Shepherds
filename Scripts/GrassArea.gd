@@ -36,9 +36,7 @@ func create_grass():
 	add_child(grassSprite)
 
 func set_grow_timer(gt):
-	print(gt)
 	grow_timer = gt
-	print(grow_timer)
 
 func destroy_area():
 	get_parent().grass_area_destroyed()
