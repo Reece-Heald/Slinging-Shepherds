@@ -11,7 +11,7 @@ var connected = false
 var just_herded : bool = false
 var direction = 0
 var known_grasses = []
-var best_grass = null
+var best_grass : Grass = null
 
 func _ready():
 	#called when a new grass enters the chat
@@ -49,24 +49,35 @@ func attract_to_grass():
 
 #just finds the closest known grass
 func calculate_best_grass():
+	#if we don't know of any grass just leave
 	if known_grasses.size() == 0: 
 		best_grass = null
 		return
+	#if we have a best grass, relive it's claim for now
+	if best_grass != null:
+		best_grass.claimed = false
+		best_grass.update()
+	
+	#start the algorithm
 	var any_real_winners : bool = false
 	best_grass = known_grasses[0]
 	var best_grass_dist = best_grass.global_position.distance_to(global_position)
+	#for each grass we know of
 	for grass in known_grasses:
-		grass = grass as Sprite
+		grass = grass as Grass
 		#makes sure the grass is still alive
 		if grass.is_inside_tree():
 			#calc grass distance
 			var dist = grass.global_position.distance_to(global_position)
-			if dist <= best_grass_dist and dist <= herding_radius:
-				any_real_winners = true
-				best_grass = grass 
-				best_grass_dist = dist
+			if dist <= best_grass_dist and dist <= herding_radius and grass.claimed == false:
+				any_real_winners = true #remind us we have a winner
+				best_grass = grass #assign it to be our best grass
+				best_grass_dist = dist #update the best grass distance
 	if not any_real_winners: best_grass = null
-
+	else:
+		best_grass.claimed = true
+		best_grass.update()
+	
 
 func _player_position_updated(who, positions: Array):
 	var combined_direction = Vector2(0,0)

@@ -1,6 +1,7 @@
 # requires parent function GrassDies()
 
 extends Sprite
+class_name Grass
 
 const bombLocation = preload("res://StationaryBomb.tscn")
 var bomb
@@ -11,8 +12,10 @@ var grow3 = preload("res://Sprites/Grass/Grass3.png")
 
 export (int) var timeToSprite2 = 3
 export (int) var timeToSprite3 = 6
+export var debug_draw = false
 
 var stage = 1
+var claimed = false
 
 func _ready():
 	TheSheepConnection.emit_signal("grass_entered_chat",self)
@@ -44,3 +47,8 @@ func _on_Area2D_body_entered(body):
 #		get_parent().get_parent().get_parent().add_child(bomb)
 #		get_parent().grass_dies()
 #		queue_free()
+
+func _draw():
+	if debug_draw:
+		if claimed:
+			draw_circle(Vector2(0,0), 32, Color(.2,1,.2,.5))
