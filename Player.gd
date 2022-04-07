@@ -93,7 +93,7 @@ func _draw():
 	
 	#draw pathing debug
 	if debug_draw:
-		for i in range(1,min(8,positions.size())): #for each point in the herding radius
+		for i in range(1,positions.size()): #for each point in the herding radius
 			draw_line(positions[-1*i] - position,positions[-1*i -1] - position, Color("FFFFFFFF"))
 
 

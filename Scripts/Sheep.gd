@@ -142,12 +142,14 @@ func _a_grass_has_left_chat(grass):
 		best_grass = null
 
 func _on_Eat_Timer_timeout():
+	#eat grass
 	if best_grass != null and is_instance_valid(best_grass):
 		best_grass.die()
 	
 	best_grass = null
 	state = IDLE
 	
+	#create bomb
 	bomb = bombLocation.instance()
 	get_tree().root.get_child(3).add_child(bomb)
 	bomb.set_global_position(global_position - (direction_real*20))
