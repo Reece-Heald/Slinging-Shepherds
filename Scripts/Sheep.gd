@@ -10,6 +10,8 @@ var connected = false
 var direction = 0
 
 func _ready():
+	#called when a new grass enters the chat
+	TheSheepConnection.connect("grass_entered_chat",self,"_a_grass_has_entered_chat")
 	randomize()
 	set_process(true)
 	
@@ -45,4 +47,6 @@ func _draw():
 		draw_circle(Vector2(0,0), herding_radius, Color(1,1,0,.1))
 		draw_line(Vector2(0,0), target_pos - position, Color(1,0,0))
 		draw_line(Vector2(0,0), direction_real * 100, Color(1,1,0))
-		draw_line(Vector2(0,0), Vector2(0,200).rotated(direction), Color(0,1,1))
+		
+func _a_grass_has_entered_chat(grass):
+	pass

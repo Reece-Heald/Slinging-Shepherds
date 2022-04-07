@@ -15,6 +15,7 @@ export (int) var timeToSprite3 = 6
 var stage = 1
 
 func _ready():
+	TheSheepConnection.emit_signal("grass_entered_chat",self)
 	set_texture(grow1)
 
 # every second
@@ -36,9 +37,10 @@ func _input(event):
 
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("Sheep") && stage >= timeToSprite3:
-		bomb = bombLocation.instance()
-		bomb.set_global_position(self.global_position)
-		get_parent().get_parent().get_parent().add_child(bomb)
-		get_parent().grass_dies()
-		queue_free()
+	pass
+#	if body.is_in_group("Sheep") && stage >= timeToSprite3:
+#		bomb = bombLocation.instance()
+#		bomb.set_global_position(self.global_position)
+#		get_parent().get_parent().get_parent().add_child(bomb)
+#		get_parent().grass_dies()
+#		queue_free()

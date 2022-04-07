@@ -40,6 +40,7 @@ config/icon="res://icon.png"
 
 BombGameVarables="*res://BombGameVarables.gd"
 PlayerHead="*res://Scripts/AutoLoad/player_head.gd"
+TheSheepConnection="*res://Scripts/AutoLoad/TheSheepConnection.gd"
 
 [display]
 
