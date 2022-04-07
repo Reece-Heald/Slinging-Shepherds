@@ -222,3 +222,5 @@ position = Vector2( 0, 576 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
+
+[node name="Node" type="Node" parent="."]
