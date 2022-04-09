@@ -32,7 +32,10 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 1200 )
 
-[node name="GrassAreaSpawner" parent="." instance=ExtResource( 2 )]
+[node name="GrassAreaSpawnerLeft" parent="." instance=ExtResource( 2 )]
+
+[node name="GrassAreaSpawnerRight" parent="." instance=ExtResource( 2 )]
+leftRight = 1
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
@@ -79,7 +82,6 @@ position = Vector2( 512, 301 )
 shape = SubResource( 1 )
 
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="Sheep" parent="." instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
@@ -93,6 +95,18 @@ position = Vector2( 765, 235 )
 [node name="Sheep4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 682, 179 )
 
+[node name="Sheep5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 295, 354 )
+
+[node name="Sheep6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 268 )
+
+[node name="Sheep7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 348, 234 )
+
+[node name="Sheep8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 275, 170 )
+
 [node name="UI" type="Control" parent="."]
 margin_left = 824.0
 margin_top = 546.0
@@ -100,19 +114,16 @@ margin_right = 1006.0
 margin_bottom = 583.0
 
 [node name="BombSlotSprite1" type="Sprite" parent="UI"]
-visible = false
 position = Vector2( 159, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
 [node name="BombSlotSprite2" type="Sprite" parent="UI"]
-visible = false
 position = Vector2( 138, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
 [node name="BombSlotSprite3" type="Sprite" parent="UI"]
-visible = false
 position = Vector2( 114, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
@@ -222,5 +233,3 @@ position = Vector2( 0, 576 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
-
-[node name="Node" type="Node" parent="."]
