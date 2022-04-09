@@ -114,16 +114,19 @@ margin_right = 1006.0
 margin_bottom = 583.0
 
 [node name="BombSlotSprite1" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 159, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
 [node name="BombSlotSprite2" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 138, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
 [node name="BombSlotSprite3" type="Sprite" parent="UI"]
+visible = false
 position = Vector2( 114, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
