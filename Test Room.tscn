@@ -83,28 +83,30 @@ shape = SubResource( 1 )
 
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
 
-[node name="Sheep" parent="." instance=ExtResource( 4 )]
+[node name="SheepHolder" type="Node" parent="."]
+
+[node name="Sheep" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
 
-[node name="Sheep2" parent="." instance=ExtResource( 4 )]
+[node name="Sheep2" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 665, 279 )
 
-[node name="Sheep3" parent="." instance=ExtResource( 4 )]
+[node name="Sheep3" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 765, 235 )
 
-[node name="Sheep4" parent="." instance=ExtResource( 4 )]
+[node name="Sheep4" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 682, 179 )
 
-[node name="Sheep5" parent="." instance=ExtResource( 4 )]
+[node name="Sheep5" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 295, 354 )
 
-[node name="Sheep6" parent="." instance=ExtResource( 4 )]
+[node name="Sheep6" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 192, 268 )
 
-[node name="Sheep7" parent="." instance=ExtResource( 4 )]
+[node name="Sheep7" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 348, 234 )
 
-[node name="Sheep8" parent="." instance=ExtResource( 4 )]
+[node name="Sheep8" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 275, 170 )
 
 [node name="UI" type="Control" parent="."]
