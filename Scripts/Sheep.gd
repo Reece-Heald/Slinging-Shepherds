@@ -15,7 +15,7 @@ var known_grasses = []
 var best_grass : Grass = null
 var best_grass_dist : float = 100000
 
-const bombLocation = preload("res://StationaryBomb.tscn")
+const bombLocation = preload("res://Prefabs/StationaryBomb.tscn")
 var bomb
 
 const EATING = 2

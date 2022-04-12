@@ -115,6 +115,7 @@ func throw_bomb():
 		newBomb.global_position = self.global_position
 		newBomb.visible  = true
 		get_parent().add_child(newBomb)
+		newBomb.changeSprite()
 		#newBomb.noMove()
 
 const base_controller_vector_scale = 30
