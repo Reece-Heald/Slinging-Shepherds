@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/Frameratelabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/GrassAreaSpawner.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Frameratelabel" parent="." instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 286, 261 )
+use_controller = false
+
+[node name="Sheep" parent="." instance=ExtResource( 3 )]
+position = Vector2( 497, 276 )
+
+[node name="GrassAreaSpawner" parent="." instance=ExtResource( 4 )]

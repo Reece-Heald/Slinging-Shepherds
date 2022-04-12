@@ -1,13 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Prefabs/GrassAreaSpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ThrowingBomb.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
-[ext_resource path="res://StationaryBomb.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/GrassAreaSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Frameratelabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=7]
-[ext_resource path="res://Assets/test Dummy.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Fence/fence.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -19,9 +17,6 @@ extents = Vector2( 600, 10 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 300 )
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 20.0
-
 [node name="Test Room" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
@@ -32,17 +27,8 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 1200 )
 
-[node name="GrassAreaSpawner" parent="." instance=ExtResource( 2 )]
-
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
-position = Vector2( 687, 355 )
-run_speed = 800.0
-use_controller = false
-
-[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
-position = Vector2( 286, 300 )
-run_speed = 800.0
-player_prefix = "p2"
+[node name="GrassAreaSpawner" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -1 )
 
 [node name="Walls" type="Node" parent="."]
 
@@ -78,21 +64,6 @@ position = Vector2( 512, 301 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallCenter"]
 shape = SubResource( 1 )
 
-[node name="Bomb" parent="." instance=ExtResource( 3 )]
-visible = false
-
-[node name="Sheep" parent="." instance=ExtResource( 4 )]
-position = Vector2( 815, 326 )
-
-[node name="Sheep2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 665, 279 )
-
-[node name="Sheep3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 765, 235 )
-
-[node name="Sheep4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 682, 179 )
-
 [node name="UI" type="Control" parent="."]
 margin_left = 824.0
 margin_top = 546.0
@@ -117,31 +88,7 @@ position = Vector2( 114, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
-[node name="StationaryBomb" parent="." instance=ExtResource( 5 )]
-position = Vector2( 913, 387 )
-
-[node name="StationaryBomb2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 630, 453 )
-
-[node name="StationaryBomb3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 813, 483 )
-
-[node name="testDummy" type="KinematicBody2D" parent="."]
-position = Vector2( 594, 167 )
-
-[node name="Sprite" type="Sprite" parent="testDummy"]
-position = Vector2( 0, 1 )
-scale = Vector2( 0.100746, 0.104621 )
-texture = ExtResource( 8 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testDummy"]
-shape = SubResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Frameratelabel" parent="UI" instance=ExtResource( 2 )]
 
 [node name="Fence" type="Node2D" parent="."]
 position = Vector2( 512, 0 )
@@ -222,3 +169,19 @@ position = Vector2( 0, 576 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 808, 305 )
+use_controller = false
+
+[node name="Sheep" parent="." instance=ExtResource( 3 )]
+position = Vector2( 799, 241 )
+
+[node name="Sheep2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 686, 324 )
+
+[node name="Sheep3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 791, 426 )
+
+[node name="Sheep4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 920, 338 )

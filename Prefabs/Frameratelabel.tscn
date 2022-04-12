@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Framerate.gd" type="Script" id=1]
+
+[node name="Frameratelabel" type="Label"]
+margin_left = -754.0
+margin_top = -489.0
+margin_right = -714.0
+margin_bottom = -475.0
+script = ExtResource( 1 )

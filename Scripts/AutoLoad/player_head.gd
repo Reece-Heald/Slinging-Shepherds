@@ -25,10 +25,13 @@ var _body_1 : Player
 var _body_2 : Player
 
 #functions
-func is_body_connected() -> bool: #check if this script's body variable is filled
-	return _body_1 != null and _body_2 != null
+func is_body_connected(num) -> bool: #check if this script's body variable is filled
+	if num == 1: return _body_1 != null 
+	if num == 2: return _body_2 != null
+	return false
 
 func connect_body(body : Player, num): #fill this scripts body variable
+	print(num)
 	if num == 1: _body_1 = body
 	if num == 2: _body_2 = body
 

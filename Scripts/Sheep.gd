@@ -11,7 +11,6 @@ export var grass_attraction_power : float = .85
 var connected = false
 var just_herded : bool = false
 var direction = 0
-var known_grasses = []
 var best_grass : Grass = null
 var best_grass_dist : float = 100000
 
@@ -27,9 +26,11 @@ func _ready():
 	randomize()
 	set_process(true)
 	
-	if PlayerHead.is_body_connected():
+	if PlayerHead.is_body_connected(look_at_player_num):
 		PlayerHead.get_body(look_at_player_num).connect("player_position", self, "_player_position_updated")
-	
+	else:
+		$FindPlayerTimer.start()
+		
 	_on_Turn_Timer_timeout()
 
 func _process(delta):
@@ -71,7 +72,7 @@ func attract_to_grass():
 #just finds the closest known grass
 func calculate_best_grass():
 	#if we don't know of any grass just leave
-	if known_grasses.size() == 0: 
+	if TheSheepConnection.known_grass.size() == 0: 
 		best_grass = null
 		return
 	#if we have a best grass, relive it's claim for now
@@ -81,11 +82,11 @@ func calculate_best_grass():
 	
 	#start the algorithm
 	var any_real_winners : bool = false
-	best_grass = known_grasses[0]
+	best_grass = TheSheepConnection.known_grass[0]
 	best_grass_dist = best_grass.global_position.distance_to(global_position)
 	
 	#for each grass we know of
-	for grass in known_grasses:
+	for grass in TheSheepConnection.known_grass:
 		if is_instance_valid(grass):
 			grass = grass as Grass
 			#makes sure the grass is still alive
@@ -133,11 +134,8 @@ func _draw():
 		if best_grass != null and is_instance_valid(best_grass): 
 			draw_line(Vector2(0,0), best_grass.global_position - global_position, Color(1,1,1,1))
 		
-func _a_grass_has_entered_chat(grass):
-	known_grasses.append(grass)
 
 func _a_grass_has_left_chat(grass):
-	known_grasses.remove(known_grasses.find(grass))
 	if best_grass == grass:
 		best_grass = null
 
@@ -153,3 +151,12 @@ func _on_Eat_Timer_timeout():
 	bomb = bombLocation.instance()
 	get_tree().root.get_child(3).add_child(bomb)
 	bomb.set_global_position(global_position - (direction_real*20))
+
+
+func _on_FindPlayerTimer_timeout():
+	print("damn")
+	if PlayerHead.is_body_connected(look_at_player_num):
+		PlayerHead.get_body(look_at_player_num).connect("player_position", self, "_player_position_updated")
+	
+	else:
+		$FindPlayerTimer.start()
