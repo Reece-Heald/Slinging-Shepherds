@@ -49,18 +49,18 @@ func _init():
 	
 func _process(delta): 
 	var distance_to_Target = self.global_position.distance_to(targetPosition) 
-	var distance_to_midpoint = self.global_position.distance_to(midPointPosition)
+	#var distance_to_midpoint = self.global_position.distance_to(midPointPosition)
 	if distance_to_Target > 5:
 		var angle = get_angle_to(targetPosition)
 		velocity.x = cos(angle)
 		velocity.y = sin(angle)
 		self.scale.x += BombGameVarables.scaleRatio
 		self.scale.y += BombGameVarables.scaleRatio
-		
+		#_speed = _speed * delta
 		#print("the end point is: ", self.global_position)
 		#print("the midpoint is: ", midPointPosition)
 		#print("distance to mid: ", distance_to_midpoint)
-		global_position += velocity * _speed  
+		global_position += velocity * _speed 
 #		print(self.global_position)
 #		print(angle)
 	if BombGameVarables.isFuseLit == true:
