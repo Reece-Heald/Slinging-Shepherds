@@ -3,7 +3,8 @@ extends KinematicBody2D
 var StationaryBomb =  load("res://Prefabs/StationaryBomb.tscn")
 var bombMidpointDetectionResource = load("res://bombMidpointDetection.tscn")
 
-var explosionArea = load("res://ExplosionArea.tscn")
+var explosionArea = load("res://Prefabs/ExplosionArea.tscn")
+var smokeEffect = load("res://Prefabs/smokeExplosion.tscn")
 
 onready var _animated_fuse = $"AnimatedSprite"
 onready var _animated_explosion = $"AnimatedSprite2"
@@ -22,6 +23,7 @@ var numOfSmokeBombs = 0
 #var numOfNorBombs = 0
 
 var currBombType = ""
+var isHit = false
 
 var damage = 5
 var bombRange = 15
@@ -75,11 +77,12 @@ func _process(delta):
 			litSmokeBomb()
 		if currBombType == "x":
 			litXBomb()
-	if distance_to_Target < 5 and is_instance_valid(bombMidpointDetection):
+	#if distance_to_Target < 5 and is_instance_valid(bombMidpointDetection):
+		
+	if distance_to_Target < 5 && isHit == false:
+		hitTarget()
 		bombMidpointDetection.queue_free()
 		bombMidpointDetection.destroy_self()
-	if distance_to_Target < 5:
-		hitTarget()
 		#self.visible = false
 		
 		#self.setIsMoving(false)
@@ -87,17 +90,34 @@ func _process(delta):
 func hitTarget():
 	#var distance_to_Target = self.global_position.distance_to(targetPosition) 
 	#print("hit target")
-	_animated_explosion.visible = true
+	
+	if(currBombType == "smoke"):
+		#print("lmao smoke bomb go smmmmmmoke") 
+		_animated_fuse.visible = false
+		var newSmoke = smokeEffect.instance()
+		newSmoke.global_position = self.global_position
+		get_parent().add_child(newSmoke)
+		#var timer = Timer.new()
+		#newSmoke.add_child(timer)
+		#timer.set_wait_time(3)
+		#timer.connect("timeout", self, "noMoreSmoke")
+
+		#newSmoke.queue_free()
+		
+	else:
+		_animated_explosion.visible = true
+		_animated_fuse.visible = false
+		_animated_explosion.play("explosion")
+		default_sprite.visible = false
+		if _animated_explosion.playing == false:
+			self.queue_free()
+	
+	
+		var newExplosion = explosionArea.instance()
+		newExplosion.global_position = self.global_position
+		get_parent().add_child(newExplosion)
+	isHit = true
 	_animated_fuse.visible = false
-	_animated_explosion.play("explosion")
-	default_sprite.visible = false
-	if _animated_explosion.playing == false:
-		self.queue_free()
-	
-	
-	var newExplosion = explosionArea.instance()
-	newExplosion.global_position = self.global_position
-	get_parent().add_child(newExplosion)
 	
 func litNorBomb( ):
 	#print("norm fuse animation")
@@ -178,4 +198,4 @@ func calculateBombNumbers():
 	#print("num of fire: ", numOfFireBombs)
 	#print("num of Smoke: ", numOfSmokeBombs)
 		
-	
+ 
