@@ -238,13 +238,13 @@ herding_radius = 100.0
 debug_draw = true
 
 [node name="ConfusionEffect" type="AnimatedSprite" parent="."]
+visible = false
 modulate = Color( 0.764706, 0.145098, 0.839216, 1 )
 light_mask = 0
 position = Vector2( 0, -4 )
 scale = Vector2( 0.1, 0.06 )
 frames = SubResource( 42 )
-frame = 2
-playing = true
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
@@ -252,6 +252,7 @@ shape = SubResource( 4 )
 [node name="SpriteHolder" type="Node2D" parent="."]
 
 [node name="Shadow" type="Sprite" parent="SpriteHolder"]
+visible = false
 material = SubResource( 44 )
 position = Vector2( -1, 9 )
 scale = Vector2( 0.05, 0.05 )
