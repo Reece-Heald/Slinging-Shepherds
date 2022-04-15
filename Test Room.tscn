@@ -32,14 +32,17 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 1200 )
 
-[node name="GrassAreaSpawner" parent="." instance=ExtResource( 2 )]
+[node name="GrassAreaSpawnerLeft" parent="." instance=ExtResource( 2 )]
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
+[node name="GrassAreaSpawnerRight" parent="." instance=ExtResource( 2 )]
+leftRight = 1
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
 use_controller = false
 
-[node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
+[node name="Player2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 286, 300 )
 run_speed = 800.0
 player_prefix = "p2"
@@ -79,19 +82,32 @@ position = Vector2( 512, 301 )
 shape = SubResource( 1 )
 
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
-visible = false
 
-[node name="Sheep" parent="." instance=ExtResource( 4 )]
+[node name="SheepHolder" type="Node" parent="."]
+
+[node name="Sheep" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
 
-[node name="Sheep2" parent="." instance=ExtResource( 4 )]
+[node name="Sheep2" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 665, 279 )
 
-[node name="Sheep3" parent="." instance=ExtResource( 4 )]
+[node name="Sheep3" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 765, 235 )
 
-[node name="Sheep4" parent="." instance=ExtResource( 4 )]
+[node name="Sheep4" parent="SheepHolder" instance=ExtResource( 4 )]
 position = Vector2( 682, 179 )
+
+[node name="Sheep5" parent="SheepHolder" instance=ExtResource( 4 )]
+position = Vector2( 295, 354 )
+
+[node name="Sheep6" parent="SheepHolder" instance=ExtResource( 4 )]
+position = Vector2( 192, 268 )
+
+[node name="Sheep7" parent="SheepHolder" instance=ExtResource( 4 )]
+position = Vector2( 348, 234 )
+
+[node name="Sheep8" parent="SheepHolder" instance=ExtResource( 4 )]
+position = Vector2( 275, 170 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = 824.0
