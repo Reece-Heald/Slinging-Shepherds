@@ -60,6 +60,7 @@ func _process(delta):
 		self.scale.x += BombGameVarables.scaleRatio
 		self.scale.y += BombGameVarables.scaleRatio
 		
+		
 		#print("the end point is: ", self.global_position)
 		#print("the midpoint is: ", midPointPosition)
 		#print("distance to mid: ", distance_to_midpoint)

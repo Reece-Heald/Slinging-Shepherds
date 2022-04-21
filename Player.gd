@@ -100,21 +100,24 @@ func _draw():
 #make and throw bomb
 func throw_bomb():
 	if(BombGameVarables.bombsInInventory.size() > 0):
+		#stuff for scaling
 		var midPosX = ceil(abs((throw_end_pos.x + self.global_position.x)/2))
 		var midPosY = ceil(abs((throw_end_pos.y + self.global_position.y)/2))
 		BombGameVarables.targetPos = throw_end_pos
 		BombGameVarables.midPointPos = Vector2(midPosX,midPosY)
 		BombGameVarables.scaleRatio = .08
+		#stuff for multi type 
 		BombGameVarables.bombsInInventory.clear()
+		#stuff for item pickup
 		bombSlot1.visible = false
 		bombSlot2.visible = false
 		bombSlot3.visible = false
-		#get_parent().remove_child(stationaryBomb)
-		#print("the start point it: ",self.global_position)
 		var newBomb = ThrowingBomb.instance()
 		newBomb.global_position = self.global_position
 		newBomb.visible  = true
 		get_parent().add_child(newBomb)
+		
+		#stuff for changing sprite for multi bomb
 		newBomb.changeSprite()
 		#newBomb.noMove()
 

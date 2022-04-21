@@ -40,6 +40,7 @@ region_rect = Rect2( 0, 0, 2048, 1200 )
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 position = Vector2( 687, 355 )
 run_speed = 800.0
+debug_draw = false
 use_controller = false
 
 [node name="Player2" parent="." groups=["Player"] instance=ExtResource( 1 )]
@@ -86,15 +87,19 @@ visible = false
 
 [node name="Sheep" parent="." instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
+debug_draw = false
 
 [node name="Sheep2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 665, 279 )
+debug_draw = false
 
 [node name="Sheep3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 765, 235 )
+debug_draw = false
 
 [node name="Sheep4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 682, 179 )
+debug_draw = false
 
 [node name="UI" type="Control" parent="."]
 margin_left = 824.0
@@ -136,6 +141,7 @@ position = Vector2( 768, 539 )
 position = Vector2( 610, 487 )
 
 [node name="testDummy" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 594, 167 )
 
 [node name="Sprite" type="Sprite" parent="testDummy"]
