@@ -14,6 +14,7 @@ var direction = 0
 var known_grasses = []
 var best_grass : Grass = null
 var best_grass_dist : float = 100000
+var health = 2
 
 const bombLocation = preload("res://StationaryBomb.tscn")
 var bomb
@@ -37,6 +38,9 @@ func _process(delta):
 	#if we are not going towards our taget position (meaning we are colliding with something)
 	if (direction_real - (target_pos-global_position).normalized()).length() > flip_threshold:
 		direction = direction - PI
+	var og_color = Color(1,1,1) if health == 2 else Color(1,.5,.5)
+	var color_mix = $"Damage Timer".time_left * 4
+	$SpriteHolder/AnimatedSprite.modulate = og_color * (1 - color_mix) + Color(1,0,0) * color_mix
 	
 	target_pos = global_position + Vector2(200,0).rotated(direction)
 	update()
@@ -46,10 +50,10 @@ func _on_Turn_Timer_timeout():
 	
 	if state == MOVING:
 		attract_to_grass()
-#		if best_grass_dist < eat_radius and state != EATING:
-#			state = EATING
-#			eat_grass()
-#			$"Eat Timer".start()
+		if best_grass_dist < eat_radius and state != EATING:
+			state = EATING
+			eat_grass()
+			$"Eat Timer".start()
 
 func eat_grass():
 	var anim = get_node(animation_node_one) as AnimatedSprite
@@ -142,6 +146,7 @@ func _a_grass_has_left_chat(grass):
 		best_grass = null
 
 func _on_Eat_Timer_timeout():
+	take_damage()
 	if best_grass != null and is_instance_valid(best_grass):
 		best_grass.die()
 	
@@ -151,3 +156,13 @@ func _on_Eat_Timer_timeout():
 	bomb = bombLocation.instance()
 	get_tree().root.get_child(3).add_child(bomb)
 	bomb.set_global_position(global_position - (direction_real*20))
+	
+func take_damage():
+	health -= 1
+	$"Damage Timer".start()
+	
+	if health <= 0:
+		die()
+
+func die():
+	queue_free()
