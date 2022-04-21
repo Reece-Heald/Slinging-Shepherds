@@ -25,23 +25,24 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Player"):
+		#BombGameVarables.addBombTypeInInventory("x")
+		BombGameVarables.bombType.append("x")
 		BombGameVarables.addBombsInInventory(self)
-		#print("bomb collided with player, adding to singleton list of bombs")
-		#self.visible = false
-		#queue_free()
-		#print(BombGameVarables.bombsInInventory.size())
 		if(BombGameVarables.bombsInInventory.size() == 1):
 			#self.global_position = bombSpot1.global_position
 			#remove_child($"Area2D")
+			bombSprite.set_texture(self.get_texture())
 			bombSprite.visible = true
 			queue_free()
 		elif(BombGameVarables.bombsInInventory.size() == 2):
 			#self.global_position = bombSpot2.global_position
 			#remove_child($"Area2D")
+			bombSprite2.set_texture(self.get_texture())
 			bombSprite2.visible = true
 			queue_free()
 		elif(BombGameVarables.bombsInInventory.size() == 3):
 			#self.global_position = bombSpot3.global_position
 			#remove_child($"Area2D")
+			bombSprite3.set_texture(self.get_texture())
 			bombSprite3.visible = true
 			queue_free()

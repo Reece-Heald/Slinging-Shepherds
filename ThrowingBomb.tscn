@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://ThrowingBomb.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=2]
@@ -10,17 +10,44 @@
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmbFrame1.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmbFrame2.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Bombs/BasicBomb/noFuseBomb.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Bombs/XBombFrame2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Bombs/SmokeBomb.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Bombs/fireBombFrame3.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Bombs/FireBombFrame1.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Bombs/Xbomb.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Bombs/FireBombFrame2.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Bombs/SmokeBombFrame2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Bombs/Firebomb.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Bombs/SmokeBombFrame3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Bombs/SmokeBombFrame1.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Bombs/XbombFrame3.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Bombs/XBombFrame1.png" type="Texture" id=22]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "xFuse",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": false,
 "name": "litFuse",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), null, null ],
-"loop": true,
+"loop": false,
 "name": "explosion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "smokeFuse",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "fireFuse",
 "speed": 5.0
 } ]
 
@@ -49,7 +76,7 @@ visible = false
 position = Vector2( 0, -3 )
 scale = Vector2( 0.0469235, 0.0469235 )
 frames = SubResource( 3 )
-animation = "litFuse"
+animation = "xFuse"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -13,6 +13,16 @@ var scaleRatio = 0
 
 var isFuseLit = false
 
+#can only be 
+# "n" = normalBomb 
+# "x" = xbomb 
+# "f" = fireBomb 
+# "s" = smokeBomb 
+var bombType = []
+
+func addBombTypeInInventory(bombType):
+	bombType.append(bombType)
+
 func addBombsInInventory(bomb):
 	bombsInInventory.append(bomb)
 	
