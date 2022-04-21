@@ -27,7 +27,7 @@ func _ready():
 	randomize()
 	set_process(true)
 	
-	if PlayerHead.is_body_connected():
+	if PlayerHead.is_body_connected(look_at_player_num):
 		PlayerHead.get_body(look_at_player_num).connect("player_position", self, "_player_position_updated")
 	
 	_on_Turn_Timer_timeout()
@@ -46,10 +46,10 @@ func _on_Turn_Timer_timeout():
 	
 	if state == MOVING:
 		attract_to_grass()
-		if best_grass_dist < eat_radius and state != EATING:
-			state = EATING
-			eat_grass()
-			$"Eat Timer".start()
+#		if best_grass_dist < eat_radius and state != EATING:
+#			state = EATING
+#			eat_grass()
+#			$"Eat Timer".start()
 
 func eat_grass():
 	var anim = get_node(animation_node_one) as AnimatedSprite

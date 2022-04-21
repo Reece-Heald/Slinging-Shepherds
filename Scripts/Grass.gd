@@ -37,16 +37,6 @@ func _input(event):
 			get_parent().grass_dies()
 			queue_free()
 
-
-func _on_Area2D_body_entered(body):
-	pass
-#	if body.is_in_group("Sheep") && stage >= timeToSprite3:
-#		bomb = bombLocation.instance()
-#		bomb.set_global_position(self.global_position)
-#		get_parent().get_parent().get_parent().add_child(bomb)
-#		get_parent().grass_dies()
-#		queue_free()
-
 func die():
 	TheSheepConnection.emit_signal("grass_left_chat",self)
 	get_parent().grass_dies()
