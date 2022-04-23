@@ -15,6 +15,8 @@ var known_grasses = []
 var best_grass : Grass = null
 var best_grass_dist : float = 100000
 var health = 2
+onready var fire_speed = 2.5 * run_speed
+onready var og_speed = run_speed
 
 const bombLocation = preload("res://Prefabs/StationaryBomb.tscn")
 var bomb
@@ -48,7 +50,7 @@ func _process(delta):
 func _on_Turn_Timer_timeout():
 	direction += (randf() - .5) * random_perterbation_scale
 	
-	if state == MOVING:
+	if state == MOVING and $"Fire Timer".time_left == 0:
 		attract_to_grass()
 		if best_grass_dist < eat_radius and state != EATING:
 			state = EATING
@@ -117,7 +119,7 @@ func _player_position_updated(who, positions: Array):
 		if dist < herding_radius: 
 			combined_direction += global_position.direction_to(positions[-1*i]) / dist #our direction to it to the sum
 	
-	if combined_direction != Vector2(0,0):
+	if combined_direction != Vector2(0,0) and $"Fire Timer".time_left == 0:
 		just_herded = true
 		direction = combined_direction.angle() + PI
 	else:
@@ -146,7 +148,6 @@ func _a_grass_has_left_chat(grass):
 		best_grass = null
 
 func _on_Eat_Timer_timeout():
-	take_damage()
 	if best_grass != null and is_instance_valid(best_grass):
 		best_grass.die()
 	
@@ -156,7 +157,12 @@ func _on_Eat_Timer_timeout():
 	bomb = bombLocation.instance()
 	get_tree().root.get_child(3).add_child(bomb)
 	bomb.set_global_position(global_position - (direction_real*20))
-	
+
+func set_on_fire():
+	run_speed = fire_speed
+	$"Fire Timer".start()
+	$CPUParticles2D.emitting = true
+
 func take_damage():
 	health -= 1
 	$"Damage Timer".start()
@@ -166,3 +172,7 @@ func take_damage():
 
 func die():
 	queue_free()
+
+
+func _on_Fire_Timer_timeout():
+	run_speed = og_speed
