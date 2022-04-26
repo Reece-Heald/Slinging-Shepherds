@@ -5,7 +5,7 @@
 [ext_resource path="res://ThrowingBomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Prefabs/StationaryBomb.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Background/samd.png" type="Texture" id=6]
+[ext_resource path="res://GrassBackground.jpeg" type="Texture" id=6]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=7]
 [ext_resource path="res://Assets/test Dummy.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Fence/fence.png" type="Texture" id=9]
@@ -28,11 +28,10 @@ radius = 20.0
 [node name="Test Room" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 2.3, 2.3 )
 z_index = -1
 texture = ExtResource( 6 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 2048, 1200 )
 
 [node name="GrassAreaSpawnerLeft" parent="." instance=ExtResource( 2 )]
