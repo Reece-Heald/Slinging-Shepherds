@@ -60,7 +60,7 @@ move_speed = 180
 position = Vector2( -108, 68 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 speed_scale = 0.7
 playing = true
 
