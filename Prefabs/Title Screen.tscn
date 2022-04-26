@@ -39,7 +39,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100, 100 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Title Screen" type="Node2D"]
 position = Vector2( 1, 0 )
 
 [node name="Background" type="Sprite" parent="."]
@@ -57,10 +57,10 @@ script = ExtResource( 6 )
 move_speed = 180
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="WalkingSheep"]
-position = Vector2( 13, 48 )
+position = Vector2( -108, 68 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 speed_scale = 0.7
 playing = true
 
