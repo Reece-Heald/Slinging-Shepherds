@@ -16,9 +16,13 @@ var best_grass : Grass = null
 var best_grass_dist : float = 100000
 var health = 2
 onready var fire_speed = 2.5 * run_speed
+onready var smoke_speed =  0 * run_speed
 onready var og_speed = run_speed
 
 const bombLocation = preload("res://Prefabs/StationaryBomb.tscn")
+const smokeBombLocation = preload("res://Prefabs/SmokeStationaryBomb.tscn")
+const xBombLocation = preload("res://Prefabs/XStationaryBomb.tscn")
+const fireBombLocation = preload("res://Prefabs/FireStationaryBomb.tscn")
 var bomb
 
 const EATING = 2
@@ -148,22 +152,55 @@ func _a_grass_has_left_chat(grass):
 		best_grass = null
 
 func _on_Eat_Timer_timeout():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var my_random_number = ceil(rng.randf_range(1, 4))
+	
 	if best_grass != null and is_instance_valid(best_grass):
 		best_grass.die()
 	
 	best_grass = null
 	state = IDLE
 	
-	bomb = bombLocation.instance()
-	get_tree().root.get_child(3).add_child(bomb)
-	bomb.set_global_position(global_position - (direction_real*20))
+#	print(my_random_number)
+#	bomb = bombLocation.instance()
+#	get_tree().root.get_child(3).add_child(bomb)
+#	bomb.set_global_position(global_position - (direction_real*20))
+	if(my_random_number == 1):
+		#norm bomb
+		bomb = bombLocation.instance()
+		get_tree().root.get_child(3).add_child(bomb)
+		bomb.set_global_position(global_position - (direction_real*20))
+	if(my_random_number == 2):
+		#fire
+		bomb = fireBombLocation.instance()
+		get_tree().root.get_child(3).add_child(bomb)
+		bomb.set_global_position(global_position - (direction_real*20))
+	if(my_random_number == 3):
+		#smoke
+		bomb = smokeBombLocation.instance()
+		get_tree().root.get_child(3).add_child(bomb)
+		bomb.set_global_position(global_position - (direction_real*20))
+	if(my_random_number == 4):
+		#X
+		bomb = xBombLocation.instance()
+		get_tree().root.get_child(3).add_child(bomb)
+		bomb.set_global_position(global_position - (direction_real*20))
+
 
 func set_on_fire():
 	run_speed = fire_speed
 	$"Fire Timer".start()
 	$CPUParticles2D.emitting = true
 
+func getConfused():
+	run_speed = smoke_speed
+	$"Smoke Timer".start()
+	$"ConfusionEffect".visible = true
+	$"ConfusionEffect".play("default")
+
 func take_damage():
+	#print("sheep get hurt")
 	health -= 1
 	$"Damage Timer".start()
 	
@@ -173,6 +210,12 @@ func take_damage():
 func die():
 	queue_free()
 
-
 func _on_Fire_Timer_timeout():
+	run_speed = og_speed
+	
+
+
+
+func _on_Smoke_Timer_timeout():
+	$ConfusionEffect.play("default")
 	run_speed = og_speed

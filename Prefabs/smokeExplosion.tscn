@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prefabs/smokeExplosion.gd" type="Script" id=1]
 
@@ -19,6 +19,9 @@ scale = 152.0
 scale_curve = SubResource( 2 )
 color = Color( 0.439216, 0.439216, 0.439216, 0.337255 )
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 54.1479
+
 [node name="SmokeEffect" type="Particles2D"]
 amount = 4
 lifetime = 2.0
@@ -31,4 +34,10 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 4 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
