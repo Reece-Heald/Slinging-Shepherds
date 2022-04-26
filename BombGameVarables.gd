@@ -13,6 +13,8 @@ var scaleRatio = 0
 
 var isFuseLit = false
 
+#onready var sheep = preload("res://Prefabs/Sheep.tscn")
+
 #can only be 
 # "n" = normalBomb 
 # "x" = xbomb 
@@ -36,3 +38,4 @@ func getBombMoving():
 
 func getIsFuseLit():
 	return isFuseLit
+
