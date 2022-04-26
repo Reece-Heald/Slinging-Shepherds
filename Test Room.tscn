@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/GrassAreaSpawner.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Prefabs/FireStationaryBomb.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Prefabs/SmokeStationaryBomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Prefabs/XStationaryBomb.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/SheepHolderLeft.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/SheepHolderRight.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 600, 10 )
@@ -86,35 +88,39 @@ shape = SubResource( 1 )
 
 [node name="Bomb" parent="." instance=ExtResource( 3 )]
 
-[node name="SheepHolder" type="Node" parent="."]
+[node name="SheepHolderLeft" type="Node" parent="."]
+script = ExtResource( 13 )
 
-[node name="Sheep" parent="SheepHolder" instance=ExtResource( 4 )]
+[node name="Sheep5" parent="SheepHolderLeft" instance=ExtResource( 4 )]
+position = Vector2( 295, 354 )
+
+[node name="Sheep6" parent="SheepHolderLeft" instance=ExtResource( 4 )]
+position = Vector2( 192, 268 )
+
+[node name="Sheep7" parent="SheepHolderLeft" instance=ExtResource( 4 )]
+position = Vector2( 348, 234 )
+
+[node name="Sheep8" parent="SheepHolderLeft" instance=ExtResource( 4 )]
+position = Vector2( 275, 170 )
+
+[node name="SheepHolderRight" type="Node" parent="."]
+script = ExtResource( 14 )
+
+[node name="Sheep" parent="SheepHolderRight" instance=ExtResource( 4 )]
 position = Vector2( 815, 326 )
 debug_draw = false
 
-[node name="Sheep2" parent="SheepHolder" instance=ExtResource( 4 )]
+[node name="Sheep2" parent="SheepHolderRight" instance=ExtResource( 4 )]
 position = Vector2( 665, 279 )
 debug_draw = false
 
-[node name="Sheep3" parent="SheepHolder" instance=ExtResource( 4 )]
+[node name="Sheep3" parent="SheepHolderRight" instance=ExtResource( 4 )]
 position = Vector2( 765, 235 )
 debug_draw = false
 
-[node name="Sheep4" parent="SheepHolder" instance=ExtResource( 4 )]
+[node name="Sheep4" parent="SheepHolderRight" instance=ExtResource( 4 )]
 position = Vector2( 682, 179 )
 debug_draw = false
-
-[node name="Sheep5" parent="SheepHolder" instance=ExtResource( 4 )]
-position = Vector2( 295, 354 )
-
-[node name="Sheep6" parent="SheepHolder" instance=ExtResource( 4 )]
-position = Vector2( 192, 268 )
-
-[node name="Sheep7" parent="SheepHolder" instance=ExtResource( 4 )]
-position = Vector2( 348, 234 )
-
-[node name="Sheep8" parent="SheepHolder" instance=ExtResource( 4 )]
-position = Vector2( 275, 170 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = 824.0
