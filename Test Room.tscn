@@ -1,16 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/GrassAreaSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ThrowingBomb.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Prefabs/Sheep.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Prefabs/StationaryBomb.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GrassBackground.jpeg" type="Texture" id=6]
 [ext_resource path="res://Assets/Bombs/BasicBomb/basicBOmb.png" type="Texture" id=7]
 [ext_resource path="res://Assets/test Dummy.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Fence/fence.png" type="Texture" id=9]
-[ext_resource path="res://Prefabs/FireStationaryBomb.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/SmokeStationaryBomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Prefabs/XStationaryBomb.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scripts/SheepHolderLeft.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/SheepHolderRight.gd" type="Script" id=14]
@@ -146,21 +143,6 @@ position = Vector2( 114, 19 )
 scale = Vector2( 0.042, 0.036 )
 texture = ExtResource( 7 )
 
-[node name="StationaryBomb" parent="." instance=ExtResource( 5 )]
-position = Vector2( 913, 387 )
-
-[node name="FireStationaryBomb" parent="." instance=ExtResource( 10 )]
-position = Vector2( 715, 487 )
-
-[node name="SmokeStationaryBomb" parent="." instance=ExtResource( 11 )]
-position = Vector2( 798, 481 )
-
-[node name="XStationaryBomb" parent="." instance=ExtResource( 12 )]
-position = Vector2( 768, 539 )
-
-[node name="FireStationaryBomb2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 610, 487 )
-
 [node name="testDummy" type="KinematicBody2D" parent="."]
 visible = false
 position = Vector2( 594, 167 )
@@ -258,3 +240,6 @@ position = Vector2( 0, 576 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
+
+[node name="XStationaryBomb" parent="." instance=ExtResource( 12 )]
+position = Vector2( 786, 481 )
