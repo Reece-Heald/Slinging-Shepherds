@@ -6,6 +6,8 @@ var bombMidpointDetectionResource = load("res://bombMidpointDetection.tscn")
 var explosionArea = load("res://Prefabs/ExplosionArea.tscn")
 var smokeEffect = load("res://Prefabs/smokeExplosion.tscn")
 var fireEffect = load("res://Prefabs/fireExplosion.tscn")
+var xEffect = load("res://Prefabs/xExplosion.tscn")
+
 onready var _animated_fuse = $"AnimatedSprite"
 onready var _animated_explosion = $"AnimatedSprite2"
 
@@ -104,11 +106,19 @@ func hitTarget():
 		#timer.connect("timeout", self, "noMoreSmoke")
 
 		#newSmoke.queue_free()
-	if(currBombType == "fire"):
+	elif(currBombType == "fire"):
 		_animated_fuse.visible = false
 		var newFire = fireEffect.instance()
 		newFire.global_position = self.global_position
 		get_parent().add_child(newFire)
+		
+	elif(currBombType == "x"):
+		#print("new x bomb")
+		_animated_fuse.visible = false
+		var newX = xEffect.instance()
+		newX.global_position = self.global_position
+		get_parent().add_child(newX)
+	
 	else:
 		_animated_explosion.visible = true
 		_animated_fuse.visible = false

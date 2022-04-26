@@ -186,7 +186,7 @@ func _on_Eat_Timer_timeout():
 		bomb = xBombLocation.instance()
 		get_tree().root.get_child(3).add_child(bomb)
 		bomb.set_global_position(global_position - (direction_real*20))
-
+	
 
 func set_on_fire():
 	run_speed = fire_speed
