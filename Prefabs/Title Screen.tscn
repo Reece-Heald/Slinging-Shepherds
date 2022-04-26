@@ -57,10 +57,9 @@ script = ExtResource( 6 )
 move_speed = 180
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="WalkingSheep"]
-position = Vector2( 13, 48 )
+position = Vector2( -108, 68 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
-frame = 1
 speed_scale = 0.7
 playing = true
 
