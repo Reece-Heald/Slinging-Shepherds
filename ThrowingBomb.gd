@@ -106,13 +106,13 @@ func hitTarget():
 		#timer.connect("timeout", self, "noMoreSmoke")
 
 		#newSmoke.queue_free()
-	if(currBombType == "fire"):
+	elif(currBombType == "fire"):
 		_animated_fuse.visible = false
 		var newFire = fireEffect.instance()
 		newFire.global_position = self.global_position
 		get_parent().add_child(newFire)
 		
-	if(currBombType == "x"):
+	elif(currBombType == "x"):
 		#print("new x bomb")
 		_animated_fuse.visible = false
 		var newX = xEffect.instance()

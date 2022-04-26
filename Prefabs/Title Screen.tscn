@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Sprites/TitleScreen/background.jpeg" type="Texture" id=1]
+[ext_resource path="res://Sprites/TitleScreen/TitleText.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/TitleScreen/ButtonText.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/TitleScreen/hat.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/TitleSheep.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/Sheep/SpriteSheets/sheep_walk.png" type="Texture" id=7]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 128, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 256, 384, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 384, 384, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 128, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 256, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 384, 128, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 100, 100 )
+
+[node name="Title Screen" type="Node2D"]
+position = Vector2( 1, 0 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 505, 302 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WalkingSheep" type="KinematicBody2D" parent="."]
+position = Vector2( 6, 374 )
+collision/safe_margin = 0.001
+script = ExtResource( 6 )
+move_speed = 180
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="WalkingSheep"]
+position = Vector2( -108, 42 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 6 )
+frame = 3
+speed_scale = 0.7
+playing = true
+
+[node name="WalkingSheep2" type="KinematicBody2D" parent="."]
+position = Vector2( 6, 374 )
+collision/safe_margin = 0.001
+script = ExtResource( 6 )
+move_speed = -180
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="WalkingSheep2"]
+position = Vector2( 1113, 88 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 11 )
+frame = 3
+speed_scale = 0.7
+playing = true
+
+[node name="TitleText" type="Sprite" parent="."]
+position = Vector2( 512.5, 140 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
+position = Vector2( 520, 349 )
+shape = SubResource( 1 )
+script = ExtResource( 5 )
+
+[node name="Hat" type="Sprite" parent="Button"]
+show_behind_parent = true
+position = Vector2( 519, 320 )
+rotation = -0.429351
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Text" type="Sprite" parent="Button"]
+position = Vector2( 512.5, 377 )
+texture = ExtResource( 3 )
+
+[connection signal="input_event" from="Button" to="Button/CollisionShape2D" method="_on_Button_input_event"]

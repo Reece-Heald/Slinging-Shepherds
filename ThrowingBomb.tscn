@@ -25,9 +25,14 @@
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ), null ],
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), null ],
 "loop": false,
-"name": "xFuse",
+"name": "litFuse",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ), null ],
+"loop": false,
+"name": "smokeFuse",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), null ],
@@ -40,14 +45,9 @@ animations = [ {
 "name": "explosion",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 17 ), null ],
+"frames": [ ExtResource( 15 ), ExtResource( 21 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ), null ],
 "loop": false,
-"name": "smokeFuse",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), null ],
-"loop": false,
-"name": "litFuse",
+"name": "xFuse",
 "speed": 5.0
 } ]
 
