@@ -28,6 +28,7 @@ var bomb
 const EATING = 2
 
 func _ready():
+	TheSheepConnection.add_sheep(look_at_player_num)
 	#called when a new grass enters the chat
 	TheSheepConnection.connect("grass_entered_chat",self,"_a_grass_has_entered_chat")
 	TheSheepConnection.connect("grass_left_chat",self,"_a_grass_has_left_chat")
@@ -208,6 +209,7 @@ func take_damage():
 		die()
 
 func die():
+	TheSheepConnection.subtract_sheep(look_at_player_num)
 	queue_free()
 
 func _on_Fire_Timer_timeout():
