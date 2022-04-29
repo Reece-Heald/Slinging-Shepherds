@@ -89,15 +89,19 @@ script = ExtResource( 13 )
 
 [node name="Sheep5" parent="SheepHolderLeft" instance=ExtResource( 4 )]
 position = Vector2( 295, 354 )
+debug_draw = false
 
 [node name="Sheep6" parent="SheepHolderLeft" instance=ExtResource( 4 )]
 position = Vector2( 192, 268 )
+debug_draw = false
 
 [node name="Sheep7" parent="SheepHolderLeft" instance=ExtResource( 4 )]
 position = Vector2( 348, 234 )
+debug_draw = false
 
 [node name="Sheep8" parent="SheepHolderLeft" instance=ExtResource( 4 )]
 position = Vector2( 275, 170 )
+debug_draw = false
 
 [node name="SheepHolderRight" type="Node" parent="."]
 script = ExtResource( 14 )

@@ -92,8 +92,7 @@ func calculate_best_grass():
 	
 	#start the algorithm
 	var any_real_winners : bool = false
-	best_grass = known_grasses[0]
-	best_grass_dist = best_grass.global_position.distance_to(global_position)
+	best_grass_dist = 100000
 	
 	#for each grass we know of
 	for grass in known_grasses:
